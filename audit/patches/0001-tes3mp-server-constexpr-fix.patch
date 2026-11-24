@@ -1,0 +1,2101 @@
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Actors.hpp b/apps/openmw-mp/Script/Functions/Actors.hpp
+--- a/apps/openmw-mp/Script/Functions/Actors.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Actors.hpp	2026-11-24 07:02:37.550711618 +0000
+@@ -2,132 +2,132 @@
+ #define OPENMW_ACTORAPI_HPP
+ 
+ #define ACTORAPI \
+-    {"ReadReceivedActorList",                  ActorFunctions::ReadReceivedActorList},\
+-    {"ReadCellActorList",                      ActorFunctions::ReadCellActorList},\
++    {"ReadReceivedActorList",                  SFP(ActorFunctions::ReadReceivedActorList)},\
++    {"ReadCellActorList",                      SFP(ActorFunctions::ReadCellActorList)},\
+     \
+-    {"ClearActorList",                         ActorFunctions::ClearActorList},\
+-    {"SetActorListPid",                        ActorFunctions::SetActorListPid},\
++    {"ClearActorList",                         SFP(ActorFunctions::ClearActorList)},\
++    {"SetActorListPid",                        SFP(ActorFunctions::SetActorListPid)},\
+     \
+-    {"CopyReceivedActorListToStore",           ActorFunctions::CopyReceivedActorListToStore},\
++    {"CopyReceivedActorListToStore",           SFP(ActorFunctions::CopyReceivedActorListToStore)},\
+     \
+-    {"GetActorListSize",                       ActorFunctions::GetActorListSize},\
+-    {"GetActorListAction",                     ActorFunctions::GetActorListAction},\
+-    \
+-    {"GetActorCell",                           ActorFunctions::GetActorCell},\
+-    {"GetActorRefId",                          ActorFunctions::GetActorRefId},\
+-    {"GetActorRefNum",                         ActorFunctions::GetActorRefNum},\
+-    {"GetActorMpNum",                          ActorFunctions::GetActorMpNum},\
+-    \
+-    {"GetActorPosX",                           ActorFunctions::GetActorPosX},\
+-    {"GetActorPosY",                           ActorFunctions::GetActorPosY},\
+-    {"GetActorPosZ",                           ActorFunctions::GetActorPosZ},\
+-    {"GetActorRotX",                           ActorFunctions::GetActorRotX},\
+-    {"GetActorRotY",                           ActorFunctions::GetActorRotY},\
+-    {"GetActorRotZ",                           ActorFunctions::GetActorRotZ},\
+-    \
+-    {"GetActorHealthBase",                     ActorFunctions::GetActorHealthBase},\
+-    {"GetActorHealthCurrent",                  ActorFunctions::GetActorHealthCurrent},\
+-    {"GetActorHealthModified",                 ActorFunctions::GetActorHealthModified},\
+-    {"GetActorMagickaBase",                    ActorFunctions::GetActorMagickaBase},\
+-    {"GetActorMagickaCurrent",                 ActorFunctions::GetActorMagickaCurrent},\
+-    {"GetActorMagickaModified",                ActorFunctions::GetActorMagickaModified},\
+-    {"GetActorFatigueBase",                    ActorFunctions::GetActorFatigueBase},\
+-    {"GetActorFatigueCurrent",                 ActorFunctions::GetActorFatigueCurrent},\
+-    {"GetActorFatigueModified",                ActorFunctions::GetActorFatigueModified},\
+-    \
+-    {"GetActorEquipmentItemRefId",             ActorFunctions::GetActorEquipmentItemRefId},\
+-    {"GetActorEquipmentItemCount",             ActorFunctions::GetActorEquipmentItemCount},\
+-    {"GetActorEquipmentItemCharge",            ActorFunctions::GetActorEquipmentItemCharge},\
+-    {"GetActorEquipmentItemEnchantmentCharge", ActorFunctions::GetActorEquipmentItemEnchantmentCharge},\
+-    \
+-    {"DoesActorHavePlayerKiller",              ActorFunctions::DoesActorHavePlayerKiller},\
+-    {"GetActorKillerPid",                      ActorFunctions::GetActorKillerPid},\
+-    {"GetActorKillerRefId",                    ActorFunctions::GetActorKillerRefId},\
+-    {"GetActorKillerRefNum",                   ActorFunctions::GetActorKillerRefNum},\
+-    {"GetActorKillerMpNum",                    ActorFunctions::GetActorKillerMpNum},\
+-    {"GetActorKillerName",                     ActorFunctions::GetActorKillerName},\
+-    {"GetActorDeathState",                     ActorFunctions::GetActorDeathState},\
+-    \
+-    {"GetActorSpellsActiveChangesSize",        ActorFunctions::GetActorSpellsActiveChangesSize},\
+-    {"GetActorSpellsActiveChangesAction",      ActorFunctions::GetActorSpellsActiveChangesAction},\
+-    {"GetActorSpellsActiveId",                 ActorFunctions::GetActorSpellsActiveId},\
+-    {"GetActorSpellsActiveDisplayName",        ActorFunctions::GetActorSpellsActiveDisplayName},\
+-    {"GetActorSpellsActiveStackingState",      ActorFunctions::GetActorSpellsActiveStackingState},\
+-    {"GetActorSpellsActiveEffectCount",        ActorFunctions::GetActorSpellsActiveEffectCount},\
+-    {"GetActorSpellsActiveEffectId",           ActorFunctions::GetActorSpellsActiveEffectId},\
+-    {"GetActorSpellsActiveEffectArg",          ActorFunctions::GetActorSpellsActiveEffectArg},\
+-    {"GetActorSpellsActiveEffectMagnitude",    ActorFunctions::GetActorSpellsActiveEffectMagnitude},\
+-    {"GetActorSpellsActiveEffectDuration",     ActorFunctions::GetActorSpellsActiveEffectDuration},\
+-    {"GetActorSpellsActiveEffectTimeLeft",     ActorFunctions::GetActorSpellsActiveEffectTimeLeft},\
+-    \
+-    {"DoesActorSpellsActiveHavePlayerCaster",  ActorFunctions::DoesActorSpellsActiveHavePlayerCaster},\
+-    {"GetActorSpellsActiveCasterPid",          ActorFunctions::GetActorSpellsActiveCasterPid},\
+-    {"GetActorSpellsActiveCasterRefId",        ActorFunctions::GetActorSpellsActiveCasterRefId},\
+-    {"GetActorSpellsActiveCasterRefNum",       ActorFunctions::GetActorSpellsActiveCasterRefNum},\
+-    {"GetActorSpellsActiveCasterMpNum",        ActorFunctions::GetActorSpellsActiveCasterMpNum},\
+-    \
+-    {"DoesActorHavePosition",                  ActorFunctions::DoesActorHavePosition},\
+-    {"DoesActorHaveStatsDynamic",              ActorFunctions::DoesActorHaveStatsDynamic},\
+-    \
+-    {"SetActorListCell",                       ActorFunctions::SetActorListCell},\
+-    {"SetActorListAction",                     ActorFunctions::SetActorListAction},\
+-    \
+-    {"SetActorCell",                           ActorFunctions::SetActorCell},\
+-    {"SetActorRefId",                          ActorFunctions::SetActorRefId},\
+-    {"SetActorRefNum",                         ActorFunctions::SetActorRefNum},\
+-    {"SetActorMpNum",                          ActorFunctions::SetActorMpNum},\
+-    \
+-    {"SetActorPosition",                       ActorFunctions::SetActorPosition},\
+-    {"SetActorRotation",                       ActorFunctions::SetActorRotation},\
+-    \
+-    {"SetActorHealthBase",                     ActorFunctions::SetActorHealthBase},\
+-    {"SetActorHealthCurrent",                  ActorFunctions::SetActorHealthCurrent},\
+-    {"SetActorHealthModified",                 ActorFunctions::SetActorHealthModified},\
+-    {"SetActorMagickaBase",                    ActorFunctions::SetActorMagickaBase},\
+-    {"SetActorMagickaCurrent",                 ActorFunctions::SetActorMagickaCurrent},\
+-    {"SetActorMagickaModified",                ActorFunctions::SetActorMagickaModified},\
+-    {"SetActorFatigueBase",                    ActorFunctions::SetActorFatigueBase},\
+-    {"SetActorFatigueCurrent",                 ActorFunctions::SetActorFatigueCurrent},\
+-    {"SetActorFatigueModified",                ActorFunctions::SetActorFatigueModified},\
+-    \
+-    {"SetActorDeathState",                     ActorFunctions::SetActorDeathState},\
+-    {"SetActorDeathInstant",                   ActorFunctions::SetActorDeathInstant},\
+-    {"SetActorSound",                          ActorFunctions::SetActorSound},\
+-    {"SetActorSpellsActiveAction",             ActorFunctions::SetActorSpellsActiveAction},\
+-    \
+-    {"SetActorAIAction",                       ActorFunctions::SetActorAIAction},\
+-    {"SetActorAITargetToPlayer",               ActorFunctions::SetActorAITargetToPlayer},\
+-    {"SetActorAITargetToObject",               ActorFunctions::SetActorAITargetToObject},\
+-    {"SetActorAICoordinates",                  ActorFunctions::SetActorAICoordinates},\
+-    {"SetActorAIDistance",                     ActorFunctions::SetActorAIDistance},\
+-    {"SetActorAIDuration",                     ActorFunctions::SetActorAIDuration},\
+-    {"SetActorAIRepetition",                   ActorFunctions::SetActorAIRepetition},\
+-    \
+-    {"EquipActorItem",                         ActorFunctions::EquipActorItem},\
+-    {"UnequipActorItem",                       ActorFunctions::UnequipActorItem},\
+-    \
+-    {"AddActorSpellActive",                    ActorFunctions::AddActorSpellActive},\
+-    {"AddActorSpellActiveEffect",              ActorFunctions::AddActorSpellActiveEffect},\
+-    \
+-    {"AddActor",                               ActorFunctions::AddActor},\
+-    \
+-    {"SendActorList",                          ActorFunctions::SendActorList},\
+-    {"SendActorAuthority",                     ActorFunctions::SendActorAuthority},\
+-    {"SendActorPosition",                      ActorFunctions::SendActorPosition},\
+-    {"SendActorStatsDynamic",                  ActorFunctions::SendActorStatsDynamic},\
+-    {"SendActorEquipment",                     ActorFunctions::SendActorEquipment},\
+-    {"SendActorSpellsActiveChanges",           ActorFunctions::SendActorSpellsActiveChanges},\
+-    {"SendActorSpeech",                        ActorFunctions::SendActorSpeech},\
+-    {"SendActorDeath",                         ActorFunctions::SendActorDeath},\
+-    {"SendActorAI",                            ActorFunctions::SendActorAI},\
+-    {"SendActorCellChange",                    ActorFunctions::SendActorCellChange},\
+-    \
+-    {"ReadLastActorList",                      ActorFunctions::ReadLastActorList},\
+-    {"InitializeActorList",                    ActorFunctions::InitializeActorList},\
+-    {"CopyLastActorListToStore",               ActorFunctions::CopyLastActorListToStore},\
+-    {"GetActorRefNumIndex",                    ActorFunctions::GetActorRefNumIndex},\
+-    {"GetActorKillerRefNumIndex",              ActorFunctions::GetActorKillerRefNumIndex},\
+-    {"SetActorRefNumIndex",                    ActorFunctions::SetActorRefNumIndex}
++    {"GetActorListSize",                       SFP(ActorFunctions::GetActorListSize)},\
++    {"GetActorListAction",                     SFP(ActorFunctions::GetActorListAction)},\
++    \
++    {"GetActorCell",                           SFP(ActorFunctions::GetActorCell)},\
++    {"GetActorRefId",                          SFP(ActorFunctions::GetActorRefId)},\
++    {"GetActorRefNum",                         SFP(ActorFunctions::GetActorRefNum)},\
++    {"GetActorMpNum",                          SFP(ActorFunctions::GetActorMpNum)},\
++    \
++    {"GetActorPosX",                           SFP(ActorFunctions::GetActorPosX)},\
++    {"GetActorPosY",                           SFP(ActorFunctions::GetActorPosY)},\
++    {"GetActorPosZ",                           SFP(ActorFunctions::GetActorPosZ)},\
++    {"GetActorRotX",                           SFP(ActorFunctions::GetActorRotX)},\
++    {"GetActorRotY",                           SFP(ActorFunctions::GetActorRotY)},\
++    {"GetActorRotZ",                           SFP(ActorFunctions::GetActorRotZ)},\
++    \
++    {"GetActorHealthBase",                     SFP(ActorFunctions::GetActorHealthBase)},\
++    {"GetActorHealthCurrent",                  SFP(ActorFunctions::GetActorHealthCurrent)},\
++    {"GetActorHealthModified",                 SFP(ActorFunctions::GetActorHealthModified)},\
++    {"GetActorMagickaBase",                    SFP(ActorFunctions::GetActorMagickaBase)},\
++    {"GetActorMagickaCurrent",                 SFP(ActorFunctions::GetActorMagickaCurrent)},\
++    {"GetActorMagickaModified",                SFP(ActorFunctions::GetActorMagickaModified)},\
++    {"GetActorFatigueBase",                    SFP(ActorFunctions::GetActorFatigueBase)},\
++    {"GetActorFatigueCurrent",                 SFP(ActorFunctions::GetActorFatigueCurrent)},\
++    {"GetActorFatigueModified",                SFP(ActorFunctions::GetActorFatigueModified)},\
++    \
++    {"GetActorEquipmentItemRefId",             SFP(ActorFunctions::GetActorEquipmentItemRefId)},\
++    {"GetActorEquipmentItemCount",             SFP(ActorFunctions::GetActorEquipmentItemCount)},\
++    {"GetActorEquipmentItemCharge",            SFP(ActorFunctions::GetActorEquipmentItemCharge)},\
++    {"GetActorEquipmentItemEnchantmentCharge", SFP(ActorFunctions::GetActorEquipmentItemEnchantmentCharge)},\
++    \
++    {"DoesActorHavePlayerKiller",              SFP(ActorFunctions::DoesActorHavePlayerKiller)},\
++    {"GetActorKillerPid",                      SFP(ActorFunctions::GetActorKillerPid)},\
++    {"GetActorKillerRefId",                    SFP(ActorFunctions::GetActorKillerRefId)},\
++    {"GetActorKillerRefNum",                   SFP(ActorFunctions::GetActorKillerRefNum)},\
++    {"GetActorKillerMpNum",                    SFP(ActorFunctions::GetActorKillerMpNum)},\
++    {"GetActorKillerName",                     SFP(ActorFunctions::GetActorKillerName)},\
++    {"GetActorDeathState",                     SFP(ActorFunctions::GetActorDeathState)},\
++    \
++    {"GetActorSpellsActiveChangesSize",        SFP(ActorFunctions::GetActorSpellsActiveChangesSize)},\
++    {"GetActorSpellsActiveChangesAction",      SFP(ActorFunctions::GetActorSpellsActiveChangesAction)},\
++    {"GetActorSpellsActiveId",                 SFP(ActorFunctions::GetActorSpellsActiveId)},\
++    {"GetActorSpellsActiveDisplayName",        SFP(ActorFunctions::GetActorSpellsActiveDisplayName)},\
++    {"GetActorSpellsActiveStackingState",      SFP(ActorFunctions::GetActorSpellsActiveStackingState)},\
++    {"GetActorSpellsActiveEffectCount",        SFP(ActorFunctions::GetActorSpellsActiveEffectCount)},\
++    {"GetActorSpellsActiveEffectId",           SFP(ActorFunctions::GetActorSpellsActiveEffectId)},\
++    {"GetActorSpellsActiveEffectArg",          SFP(ActorFunctions::GetActorSpellsActiveEffectArg)},\
++    {"GetActorSpellsActiveEffectMagnitude",    SFP(ActorFunctions::GetActorSpellsActiveEffectMagnitude)},\
++    {"GetActorSpellsActiveEffectDuration",     SFP(ActorFunctions::GetActorSpellsActiveEffectDuration)},\
++    {"GetActorSpellsActiveEffectTimeLeft",     SFP(ActorFunctions::GetActorSpellsActiveEffectTimeLeft)},\
++    \
++    {"DoesActorSpellsActiveHavePlayerCaster",  SFP(ActorFunctions::DoesActorSpellsActiveHavePlayerCaster)},\
++    {"GetActorSpellsActiveCasterPid",          SFP(ActorFunctions::GetActorSpellsActiveCasterPid)},\
++    {"GetActorSpellsActiveCasterRefId",        SFP(ActorFunctions::GetActorSpellsActiveCasterRefId)},\
++    {"GetActorSpellsActiveCasterRefNum",       SFP(ActorFunctions::GetActorSpellsActiveCasterRefNum)},\
++    {"GetActorSpellsActiveCasterMpNum",        SFP(ActorFunctions::GetActorSpellsActiveCasterMpNum)},\
++    \
++    {"DoesActorHavePosition",                  SFP(ActorFunctions::DoesActorHavePosition)},\
++    {"DoesActorHaveStatsDynamic",              SFP(ActorFunctions::DoesActorHaveStatsDynamic)},\
++    \
++    {"SetActorListCell",                       SFP(ActorFunctions::SetActorListCell)},\
++    {"SetActorListAction",                     SFP(ActorFunctions::SetActorListAction)},\
++    \
++    {"SetActorCell",                           SFP(ActorFunctions::SetActorCell)},\
++    {"SetActorRefId",                          SFP(ActorFunctions::SetActorRefId)},\
++    {"SetActorRefNum",                         SFP(ActorFunctions::SetActorRefNum)},\
++    {"SetActorMpNum",                          SFP(ActorFunctions::SetActorMpNum)},\
++    \
++    {"SetActorPosition",                       SFP(ActorFunctions::SetActorPosition)},\
++    {"SetActorRotation",                       SFP(ActorFunctions::SetActorRotation)},\
++    \
++    {"SetActorHealthBase",                     SFP(ActorFunctions::SetActorHealthBase)},\
++    {"SetActorHealthCurrent",                  SFP(ActorFunctions::SetActorHealthCurrent)},\
++    {"SetActorHealthModified",                 SFP(ActorFunctions::SetActorHealthModified)},\
++    {"SetActorMagickaBase",                    SFP(ActorFunctions::SetActorMagickaBase)},\
++    {"SetActorMagickaCurrent",                 SFP(ActorFunctions::SetActorMagickaCurrent)},\
++    {"SetActorMagickaModified",                SFP(ActorFunctions::SetActorMagickaModified)},\
++    {"SetActorFatigueBase",                    SFP(ActorFunctions::SetActorFatigueBase)},\
++    {"SetActorFatigueCurrent",                 SFP(ActorFunctions::SetActorFatigueCurrent)},\
++    {"SetActorFatigueModified",                SFP(ActorFunctions::SetActorFatigueModified)},\
++    \
++    {"SetActorDeathState",                     SFP(ActorFunctions::SetActorDeathState)},\
++    {"SetActorDeathInstant",                   SFP(ActorFunctions::SetActorDeathInstant)},\
++    {"SetActorSound",                          SFP(ActorFunctions::SetActorSound)},\
++    {"SetActorSpellsActiveAction",             SFP(ActorFunctions::SetActorSpellsActiveAction)},\
++    \
++    {"SetActorAIAction",                       SFP(ActorFunctions::SetActorAIAction)},\
++    {"SetActorAITargetToPlayer",               SFP(ActorFunctions::SetActorAITargetToPlayer)},\
++    {"SetActorAITargetToObject",               SFP(ActorFunctions::SetActorAITargetToObject)},\
++    {"SetActorAICoordinates",                  SFP(ActorFunctions::SetActorAICoordinates)},\
++    {"SetActorAIDistance",                     SFP(ActorFunctions::SetActorAIDistance)},\
++    {"SetActorAIDuration",                     SFP(ActorFunctions::SetActorAIDuration)},\
++    {"SetActorAIRepetition",                   SFP(ActorFunctions::SetActorAIRepetition)},\
++    \
++    {"EquipActorItem",                         SFP(ActorFunctions::EquipActorItem)},\
++    {"UnequipActorItem",                       SFP(ActorFunctions::UnequipActorItem)},\
++    \
++    {"AddActorSpellActive",                    SFP(ActorFunctions::AddActorSpellActive)},\
++    {"AddActorSpellActiveEffect",              SFP(ActorFunctions::AddActorSpellActiveEffect)},\
++    \
++    {"AddActor",                               SFP(ActorFunctions::AddActor)},\
++    \
++    {"SendActorList",                          SFP(ActorFunctions::SendActorList)},\
++    {"SendActorAuthority",                     SFP(ActorFunctions::SendActorAuthority)},\
++    {"SendActorPosition",                      SFP(ActorFunctions::SendActorPosition)},\
++    {"SendActorStatsDynamic",                  SFP(ActorFunctions::SendActorStatsDynamic)},\
++    {"SendActorEquipment",                     SFP(ActorFunctions::SendActorEquipment)},\
++    {"SendActorSpellsActiveChanges",           SFP(ActorFunctions::SendActorSpellsActiveChanges)},\
++    {"SendActorSpeech",                        SFP(ActorFunctions::SendActorSpeech)},\
++    {"SendActorDeath",                         SFP(ActorFunctions::SendActorDeath)},\
++    {"SendActorAI",                            SFP(ActorFunctions::SendActorAI)},\
++    {"SendActorCellChange",                    SFP(ActorFunctions::SendActorCellChange)},\
++    \
++    {"ReadLastActorList",                      SFP(ActorFunctions::ReadLastActorList)},\
++    {"InitializeActorList",                    SFP(ActorFunctions::InitializeActorList)},\
++    {"CopyLastActorListToStore",               SFP(ActorFunctions::CopyLastActorListToStore)},\
++    {"GetActorRefNumIndex",                    SFP(ActorFunctions::GetActorRefNumIndex)},\
++    {"GetActorKillerRefNumIndex",              SFP(ActorFunctions::GetActorKillerRefNumIndex)},\
++    {"SetActorRefNumIndex",                    SFP(ActorFunctions::SetActorRefNumIndex)}
+ 
+ class ActorFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Books.hpp b/apps/openmw-mp/Script/Functions/Books.hpp
+--- a/apps/openmw-mp/Script/Functions/Books.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Books.hpp	2026-11-24 07:02:37.552164445 +0000
+@@ -2,17 +2,17 @@
+ #define OPENMW_BOOKAPI_HPP
+ 
+ #define BOOKAPI \
+-    {"ClearBookChanges",       BookFunctions::ClearBookChanges},\
++    {"ClearBookChanges",       SFP(BookFunctions::ClearBookChanges)},\
+     \
+-    {"GetBookChangesSize",     BookFunctions::GetBookChangesSize},\
++    {"GetBookChangesSize",     SFP(BookFunctions::GetBookChangesSize)},\
+     \
+-    {"AddBook",                BookFunctions::AddBook},\
++    {"AddBook",                SFP(BookFunctions::AddBook)},\
+     \
+-    {"GetBookId",              BookFunctions::GetBookId},\
++    {"GetBookId",              SFP(BookFunctions::GetBookId)},\
+     \
+-    {"SendBookChanges",        BookFunctions::SendBookChanges},\
++    {"SendBookChanges",        SFP(BookFunctions::SendBookChanges)},\
+     \
+-    {"InitializeBookChanges",  BookFunctions::InitializeBookChanges}
++    {"InitializeBookChanges",  SFP(BookFunctions::InitializeBookChanges)}
+ 
+ class BookFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Cells.hpp b/apps/openmw-mp/Script/Functions/Cells.hpp
+--- a/apps/openmw-mp/Script/Functions/Cells.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Cells.hpp	2026-11-24 07:02:37.552107186 +0000
+@@ -4,23 +4,23 @@
+ #include "../Types.hpp"
+ 
+ #define CELLAPI \
+-    {"GetCellStateChangesSize", CellFunctions::GetCellStateChangesSize},\
++    {"GetCellStateChangesSize", SFP(CellFunctions::GetCellStateChangesSize)},\
+     \
+-    {"GetCellStateType",        CellFunctions::GetCellStateType},\
+-    {"GetCellStateDescription", CellFunctions::GetCellStateDescription},\
++    {"GetCellStateType",        SFP(CellFunctions::GetCellStateType)},\
++    {"GetCellStateDescription", SFP(CellFunctions::GetCellStateDescription)},\
+     \
+-    {"GetCell",                 CellFunctions::GetCell},\
+-    {"GetExteriorX",            CellFunctions::GetExteriorX},\
+-    {"GetExteriorY",            CellFunctions::GetExteriorY},\
+-    {"IsInExterior",            CellFunctions::IsInExterior},\
++    {"GetCell",                 SFP(CellFunctions::GetCell)},\
++    {"GetExteriorX",            SFP(CellFunctions::GetExteriorX)},\
++    {"GetExteriorY",            SFP(CellFunctions::GetExteriorY)},\
++    {"IsInExterior",            SFP(CellFunctions::IsInExterior)},\
+     \
+-    {"GetRegion",               CellFunctions::GetRegion},\
+-    {"IsChangingRegion",        CellFunctions::IsChangingRegion},\
++    {"GetRegion",               SFP(CellFunctions::GetRegion)},\
++    {"IsChangingRegion",        SFP(CellFunctions::IsChangingRegion)},\
+     \
+-    {"SetCell",                 CellFunctions::SetCell},\
+-    {"SetExteriorCell",         CellFunctions::SetExteriorCell},\
++    {"SetCell",                 SFP(CellFunctions::SetCell)},\
++    {"SetExteriorCell",         SFP(CellFunctions::SetExteriorCell)},\
+     \
+-    {"SendCell",                CellFunctions::SendCell}
++    {"SendCell",                SFP(CellFunctions::SendCell)}
+ 
+ 
+ class CellFunctions
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/CharClass.hpp b/apps/openmw-mp/Script/Functions/CharClass.hpp
+--- a/apps/openmw-mp/Script/Functions/CharClass.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/CharClass.hpp	2026-11-24 07:02:37.551319013 +0000
+@@ -4,24 +4,24 @@
+ #include "../Types.hpp"
+ 
+ #define CHARCLASSAPI \
+-    {"GetDefaultClass",        CharClassFunctions::GetDefaultClass},\
+-    {"GetClassName",           CharClassFunctions::GetClassName},\
+-    {"GetClassDesc",           CharClassFunctions::GetClassDesc},\
+-    {"GetClassMajorAttribute", CharClassFunctions::GetClassMajorAttribute},\
+-    {"GetClassSpecialization", CharClassFunctions::GetClassSpecialization},\
+-    {"GetClassMajorSkill",     CharClassFunctions::GetClassMajorSkill},\
+-    {"GetClassMinorSkill",     CharClassFunctions::GetClassMinorSkill},\
+-    {"IsClassDefault",         CharClassFunctions::IsClassDefault},\
++    {"GetDefaultClass",        SFP(CharClassFunctions::GetDefaultClass)},\
++    {"GetClassName",           SFP(CharClassFunctions::GetClassName)},\
++    {"GetClassDesc",           SFP(CharClassFunctions::GetClassDesc)},\
++    {"GetClassMajorAttribute", SFP(CharClassFunctions::GetClassMajorAttribute)},\
++    {"GetClassSpecialization", SFP(CharClassFunctions::GetClassSpecialization)},\
++    {"GetClassMajorSkill",     SFP(CharClassFunctions::GetClassMajorSkill)},\
++    {"GetClassMinorSkill",     SFP(CharClassFunctions::GetClassMinorSkill)},\
++    {"IsClassDefault",         SFP(CharClassFunctions::IsClassDefault)},\
+     \
+-    {"SetDefaultClass",        CharClassFunctions::SetDefaultClass},\
+-    {"SetClassName",           CharClassFunctions::SetClassName},\
+-    {"SetClassDesc",           CharClassFunctions::SetClassDesc},\
+-    {"SetClassMajorAttribute", CharClassFunctions::SetClassMajorAttribute},\
+-    {"SetClassSpecialization", CharClassFunctions::SetClassSpecialization},\
+-    {"SetClassMajorSkill",     CharClassFunctions::SetClassMajorSkill},\
+-    {"SetClassMinorSkill",     CharClassFunctions::SetClassMinorSkill},\
++    {"SetDefaultClass",        SFP(CharClassFunctions::SetDefaultClass)},\
++    {"SetClassName",           SFP(CharClassFunctions::SetClassName)},\
++    {"SetClassDesc",           SFP(CharClassFunctions::SetClassDesc)},\
++    {"SetClassMajorAttribute", SFP(CharClassFunctions::SetClassMajorAttribute)},\
++    {"SetClassSpecialization", SFP(CharClassFunctions::SetClassSpecialization)},\
++    {"SetClassMajorSkill",     SFP(CharClassFunctions::SetClassMajorSkill)},\
++    {"SetClassMinorSkill",     SFP(CharClassFunctions::SetClassMinorSkill)},\
+     \
+-    {"SendClass",              CharClassFunctions::SendClass}
++    {"SendClass",              SFP(CharClassFunctions::SendClass)}
+ 
+ 
+ class CharClassFunctions
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Chat.hpp b/apps/openmw-mp/Script/Functions/Chat.hpp
+--- a/apps/openmw-mp/Script/Functions/Chat.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Chat.hpp	2026-11-24 07:02:37.550783000 +0000
+@@ -4,9 +4,9 @@
+ #include "../Types.hpp"
+ 
+ #define CHATAPI \
+-    {"SendMessage",       ChatFunctions::SendMessage},\
+-    {"CleanChatForPid",   ChatFunctions::CleanChatForPid},\
+-    {"CleanChat",         ChatFunctions::CleanChat}
++    {"SendMessage",       SFP(ChatFunctions::SendMessage)},\
++    {"CleanChatForPid",   SFP(ChatFunctions::CleanChatForPid)},\
++    {"CleanChat",         SFP(ChatFunctions::CleanChat)}
+ 
+ class ChatFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Dialogue.hpp b/apps/openmw-mp/Script/Functions/Dialogue.hpp
+--- a/apps/openmw-mp/Script/Functions/Dialogue.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Dialogue.hpp	2026-11-24 07:02:37.551189155 +0000
+@@ -2,20 +2,20 @@
+ #define OPENMW_DIALOGUEAPI_HPP
+ 
+ #define DIALOGUEAPI \
+-    {"ClearTopicChanges",       DialogueFunctions::ClearTopicChanges},\
++    {"ClearTopicChanges",       SFP(DialogueFunctions::ClearTopicChanges)},\
+     \
+-    {"GetTopicChangesSize",     DialogueFunctions::GetTopicChangesSize},\
++    {"GetTopicChangesSize",     SFP(DialogueFunctions::GetTopicChangesSize)},\
+     \
+-    {"AddTopic",                DialogueFunctions::AddTopic},\
++    {"AddTopic",                SFP(DialogueFunctions::AddTopic)},\
+     \
+-    {"GetTopicId",              DialogueFunctions::GetTopicId},\
++    {"GetTopicId",              SFP(DialogueFunctions::GetTopicId)},\
+     \
+-    {"SendTopicChanges",        DialogueFunctions::SendTopicChanges},\
++    {"SendTopicChanges",        SFP(DialogueFunctions::SendTopicChanges)},\
+     \
+-    {"PlayAnimation",           DialogueFunctions::PlayAnimation},\
+-    {"PlaySpeech",              DialogueFunctions::PlaySpeech},\
++    {"PlayAnimation",           SFP(DialogueFunctions::PlayAnimation)},\
++    {"PlaySpeech",              SFP(DialogueFunctions::PlaySpeech)},\
+     \
+-    {"InitializeTopicChanges",  DialogueFunctions::InitializeTopicChanges}
++    {"InitializeTopicChanges",  SFP(DialogueFunctions::InitializeTopicChanges)}
+ 
+ class DialogueFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Factions.hpp b/apps/openmw-mp/Script/Functions/Factions.hpp
+--- a/apps/openmw-mp/Script/Functions/Factions.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Factions.hpp	2026-11-24 07:02:37.550547272 +0000
+@@ -2,27 +2,27 @@
+ #define OPENMW_FACTIONAPI_HPP
+ 
+ #define FACTIONAPI \
+-    {"ClearFactionChanges",      FactionFunctions::ClearFactionChanges},\
++    {"ClearFactionChanges",      SFP(FactionFunctions::ClearFactionChanges)},\
+     \
+-    {"GetFactionChangesSize",    FactionFunctions::GetFactionChangesSize},\
+-    {"GetFactionChangesAction",  FactionFunctions::GetFactionChangesAction},\
++    {"GetFactionChangesSize",    SFP(FactionFunctions::GetFactionChangesSize)},\
++    {"GetFactionChangesAction",  SFP(FactionFunctions::GetFactionChangesAction)},\
+     \
+-    {"GetFactionId",             FactionFunctions::GetFactionId},\
+-    {"GetFactionRank",           FactionFunctions::GetFactionRank},\
+-    {"GetFactionExpulsionState", FactionFunctions::GetFactionExpulsionState},\
+-    {"GetFactionReputation",     FactionFunctions::GetFactionReputation},\
++    {"GetFactionId",             SFP(FactionFunctions::GetFactionId)},\
++    {"GetFactionRank",           SFP(FactionFunctions::GetFactionRank)},\
++    {"GetFactionExpulsionState", SFP(FactionFunctions::GetFactionExpulsionState)},\
++    {"GetFactionReputation",     SFP(FactionFunctions::GetFactionReputation)},\
+     \
+-    {"SetFactionChangesAction",  FactionFunctions::SetFactionChangesAction},\
+-    {"SetFactionId",             FactionFunctions::SetFactionId},\
+-    {"SetFactionRank",           FactionFunctions::SetFactionRank},\
+-    {"SetFactionExpulsionState", FactionFunctions::SetFactionExpulsionState},\
+-    {"SetFactionReputation",     FactionFunctions::SetFactionReputation},\
++    {"SetFactionChangesAction",  SFP(FactionFunctions::SetFactionChangesAction)},\
++    {"SetFactionId",             SFP(FactionFunctions::SetFactionId)},\
++    {"SetFactionRank",           SFP(FactionFunctions::SetFactionRank)},\
++    {"SetFactionExpulsionState", SFP(FactionFunctions::SetFactionExpulsionState)},\
++    {"SetFactionReputation",     SFP(FactionFunctions::SetFactionReputation)},\
+     \
+-    {"AddFaction",               FactionFunctions::AddFaction},\
++    {"AddFaction",               SFP(FactionFunctions::AddFaction)},\
+     \
+-    {"SendFactionChanges",       FactionFunctions::SendFactionChanges},\
++    {"SendFactionChanges",       SFP(FactionFunctions::SendFactionChanges)},\
+     \
+-    {"InitializeFactionChanges", FactionFunctions::InitializeFactionChanges}
++    {"InitializeFactionChanges", SFP(FactionFunctions::InitializeFactionChanges)}
+ 
+ class FactionFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/GUI.hpp b/apps/openmw-mp/Script/Functions/GUI.hpp
+--- a/apps/openmw-mp/Script/Functions/GUI.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/GUI.hpp	2026-11-24 07:02:37.550847425 +0000
+@@ -2,28 +2,28 @@
+ #define OPENMW_GUIAPI_HPP
+ 
+ #define GUIAPI \
+-    {"MessageBox",                 GUIFunctions::_MessageBox},\
+-    {"CustomMessageBox",           GUIFunctions::CustomMessageBox},\
+-    {"InputDialog",                GUIFunctions::InputDialog},\
+-    {"PasswordDialog",             GUIFunctions::PasswordDialog},\
+-    {"ListBox",                    GUIFunctions::ListBox},\
++    {"MessageBox",                 SFP(GUIFunctions::_MessageBox)},\
++    {"CustomMessageBox",           SFP(GUIFunctions::CustomMessageBox)},\
++    {"InputDialog",                SFP(GUIFunctions::InputDialog)},\
++    {"PasswordDialog",             SFP(GUIFunctions::PasswordDialog)},\
++    {"ListBox",                    SFP(GUIFunctions::ListBox)},\
+     \
+-    {"ClearQuickKeyChanges",       GUIFunctions::ClearQuickKeyChanges},\
++    {"ClearQuickKeyChanges",       SFP(GUIFunctions::ClearQuickKeyChanges)},\
+     \
+-    {"GetQuickKeyChangesSize",     GUIFunctions::GetQuickKeyChangesSize},\
++    {"GetQuickKeyChangesSize",     SFP(GUIFunctions::GetQuickKeyChangesSize)},\
+     \
+-    {"GetQuickKeySlot",            GUIFunctions::GetQuickKeySlot},\
+-    {"GetQuickKeyType",            GUIFunctions::GetQuickKeyType},\
+-    {"GetQuickKeyItemId",          GUIFunctions::GetQuickKeyItemId},\
++    {"GetQuickKeySlot",            SFP(GUIFunctions::GetQuickKeySlot)},\
++    {"GetQuickKeyType",            SFP(GUIFunctions::GetQuickKeyType)},\
++    {"GetQuickKeyItemId",          SFP(GUIFunctions::GetQuickKeyItemId)},\
+     \
+-    {"AddQuickKey",                GUIFunctions::AddQuickKey},\
++    {"AddQuickKey",                SFP(GUIFunctions::AddQuickKey)},\
+     \
+-    {"SendQuickKeyChanges",        GUIFunctions::SendQuickKeyChanges},\
++    {"SendQuickKeyChanges",        SFP(GUIFunctions::SendQuickKeyChanges)},\
+     \
+-    {"SetMapVisibility",           GUIFunctions::SetMapVisibility},\
+-    {"SetMapVisibilityAll",        GUIFunctions::SetMapVisibilityAll},\
++    {"SetMapVisibility",           SFP(GUIFunctions::SetMapVisibility)},\
++    {"SetMapVisibilityAll",        SFP(GUIFunctions::SetMapVisibilityAll)},\
+     \
+-    {"InitializeQuickKeyChanges",  GUIFunctions::InitializeQuickKeyChanges}
++    {"InitializeQuickKeyChanges",  SFP(GUIFunctions::InitializeQuickKeyChanges)}
+ 
+ class GUIFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Items.hpp b/apps/openmw-mp/Script/Functions/Items.hpp
+--- a/apps/openmw-mp/Script/Functions/Items.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Items.hpp	2026-11-24 07:02:37.550396099 +0000
+@@ -2,46 +2,46 @@
+ #define OPENMW_ITEMAPI_HPP
+ 
+ #define ITEMAPI \
+-    {"ClearInventoryChanges",                 ItemFunctions::ClearInventoryChanges},\
++    {"ClearInventoryChanges",                 SFP(ItemFunctions::ClearInventoryChanges)},\
+     \
+-    {"GetEquipmentSize",                      ItemFunctions::GetEquipmentSize},\
+-    {"GetEquipmentChangesSize",               ItemFunctions::GetEquipmentChangesSize},\
+-    {"GetInventoryChangesSize",               ItemFunctions::GetInventoryChangesSize},\
+-    {"GetInventoryChangesAction",             ItemFunctions::GetInventoryChangesAction},\
+-    \
+-    {"SetInventoryChangesAction",             ItemFunctions::SetInventoryChangesAction},\
+-    \
+-    {"EquipItem",                             ItemFunctions::EquipItem},\
+-    {"UnequipItem",                           ItemFunctions::UnequipItem},\
+-    \
+-    {"AddItemChange",                         ItemFunctions::AddItemChange},\
+-    \
+-    {"HasItemEquipped",                       ItemFunctions::HasItemEquipped},\
+-    \
+-    {"GetEquipmentChangesSlot",                ItemFunctions::GetEquipmentChangesSlot},\
+-    {"GetEquipmentItemRefId",                 ItemFunctions::GetEquipmentItemRefId},\
+-    {"GetEquipmentItemCount",                 ItemFunctions::GetEquipmentItemCount},\
+-    {"GetEquipmentItemCharge",                ItemFunctions::GetEquipmentItemCharge},\
+-    {"GetEquipmentItemEnchantmentCharge",     ItemFunctions::GetEquipmentItemEnchantmentCharge},\
+-    \
+-    {"GetInventoryItemRefId",                 ItemFunctions::GetInventoryItemRefId},\
+-    {"GetInventoryItemCount",                 ItemFunctions::GetInventoryItemCount},\
+-    {"GetInventoryItemCharge",                ItemFunctions::GetInventoryItemCharge},\
+-    {"GetInventoryItemEnchantmentCharge",     ItemFunctions::GetInventoryItemEnchantmentCharge},\
+-    {"GetInventoryItemSoul",                  ItemFunctions::GetInventoryItemSoul},\
+-    \
+-    {"GetUsedItemRefId",                      ItemFunctions::GetUsedItemRefId},\
+-    {"GetUsedItemCount",                      ItemFunctions::GetUsedItemCount},\
+-    {"GetUsedItemCharge",                     ItemFunctions::GetUsedItemCharge},\
+-    {"GetUsedItemEnchantmentCharge",          ItemFunctions::GetUsedItemEnchantmentCharge},\
+-    {"GetUsedItemSoul",                       ItemFunctions::GetUsedItemSoul},\
+-    \
+-    {"SendEquipment",                         ItemFunctions::SendEquipment},\
+-    {"SendInventoryChanges",                  ItemFunctions::SendInventoryChanges},\
+-    {"SendItemUse",                           ItemFunctions::SendItemUse},\
++    {"GetEquipmentSize",                      SFP(ItemFunctions::GetEquipmentSize)},\
++    {"GetEquipmentChangesSize",               SFP(ItemFunctions::GetEquipmentChangesSize)},\
++    {"GetInventoryChangesSize",               SFP(ItemFunctions::GetInventoryChangesSize)},\
++    {"GetInventoryChangesAction",             SFP(ItemFunctions::GetInventoryChangesAction)},\
++    \
++    {"SetInventoryChangesAction",             SFP(ItemFunctions::SetInventoryChangesAction)},\
++    \
++    {"EquipItem",                             SFP(ItemFunctions::EquipItem)},\
++    {"UnequipItem",                           SFP(ItemFunctions::UnequipItem)},\
++    \
++    {"AddItemChange",                         SFP(ItemFunctions::AddItemChange)},\
++    \
++    {"HasItemEquipped",                       SFP(ItemFunctions::HasItemEquipped)},\
++    \
++    {"GetEquipmentChangesSlot",                SFP(ItemFunctions::GetEquipmentChangesSlot)},\
++    {"GetEquipmentItemRefId",                 SFP(ItemFunctions::GetEquipmentItemRefId)},\
++    {"GetEquipmentItemCount",                 SFP(ItemFunctions::GetEquipmentItemCount)},\
++    {"GetEquipmentItemCharge",                SFP(ItemFunctions::GetEquipmentItemCharge)},\
++    {"GetEquipmentItemEnchantmentCharge",     SFP(ItemFunctions::GetEquipmentItemEnchantmentCharge)},\
++    \
++    {"GetInventoryItemRefId",                 SFP(ItemFunctions::GetInventoryItemRefId)},\
++    {"GetInventoryItemCount",                 SFP(ItemFunctions::GetInventoryItemCount)},\
++    {"GetInventoryItemCharge",                SFP(ItemFunctions::GetInventoryItemCharge)},\
++    {"GetInventoryItemEnchantmentCharge",     SFP(ItemFunctions::GetInventoryItemEnchantmentCharge)},\
++    {"GetInventoryItemSoul",                  SFP(ItemFunctions::GetInventoryItemSoul)},\
++    \
++    {"GetUsedItemRefId",                      SFP(ItemFunctions::GetUsedItemRefId)},\
++    {"GetUsedItemCount",                      SFP(ItemFunctions::GetUsedItemCount)},\
++    {"GetUsedItemCharge",                     SFP(ItemFunctions::GetUsedItemCharge)},\
++    {"GetUsedItemEnchantmentCharge",          SFP(ItemFunctions::GetUsedItemEnchantmentCharge)},\
++    {"GetUsedItemSoul",                       SFP(ItemFunctions::GetUsedItemSoul)},\
++    \
++    {"SendEquipment",                         SFP(ItemFunctions::SendEquipment)},\
++    {"SendInventoryChanges",                  SFP(ItemFunctions::SendInventoryChanges)},\
++    {"SendItemUse",                           SFP(ItemFunctions::SendItemUse)},\
+     \
+-    {"InitializeInventoryChanges",            ItemFunctions::InitializeInventoryChanges},\
+-    {"AddItem",                               ItemFunctions::AddItem}
++    {"InitializeInventoryChanges",            SFP(ItemFunctions::InitializeInventoryChanges)},\
++    {"AddItem",                               SFP(ItemFunctions::AddItem)}
+ 
+ class ItemFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Mechanics.hpp b/apps/openmw-mp/Script/Functions/Mechanics.hpp
+--- a/apps/openmw-mp/Script/Functions/Mechanics.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Mechanics.hpp	2026-11-24 07:02:37.550480370 +0000
+@@ -4,44 +4,44 @@
+ #include "../Types.hpp"
+ 
+ #define MECHANICSAPI \
+-    {"ClearAlliedPlayersForPlayer", MechanicsFunctions::ClearAlliedPlayersForPlayer},\
++    {"ClearAlliedPlayersForPlayer", SFP(MechanicsFunctions::ClearAlliedPlayersForPlayer)},\
+     \
+-    {"GetMiscellaneousChangeType",  MechanicsFunctions::GetMiscellaneousChangeType},\
++    {"GetMiscellaneousChangeType",  SFP(MechanicsFunctions::GetMiscellaneousChangeType)},\
+     \
+-    {"GetMarkCell",                 MechanicsFunctions::GetMarkCell},\
+-    {"GetMarkPosX",                 MechanicsFunctions::GetMarkPosX},\
+-    {"GetMarkPosY",                 MechanicsFunctions::GetMarkPosY},\
+-    {"GetMarkPosZ",                 MechanicsFunctions::GetMarkPosZ},\
+-    {"GetMarkRotX",                 MechanicsFunctions::GetMarkRotX},\
+-    {"GetMarkRotZ",                 MechanicsFunctions::GetMarkRotZ},\
+-    {"GetSelectedSpellId",          MechanicsFunctions::GetSelectedSpellId},\
+-    \
+-    {"DoesPlayerHavePlayerKiller",  MechanicsFunctions::DoesPlayerHavePlayerKiller},\
+-    {"GetPlayerKillerPid",          MechanicsFunctions::GetPlayerKillerPid},\
+-    {"GetPlayerKillerRefId",        MechanicsFunctions::GetPlayerKillerRefId},\
+-    {"GetPlayerKillerRefNum",       MechanicsFunctions::GetPlayerKillerRefNum},\
+-    {"GetPlayerKillerMpNum",        MechanicsFunctions::GetPlayerKillerMpNum},\
+-    {"GetPlayerKillerName",         MechanicsFunctions::GetPlayerKillerName},\
+-    \
+-    {"GetDrawState",                MechanicsFunctions::GetDrawState},\
+-    {"GetSneakState",               MechanicsFunctions::GetSneakState},\
+-    \
+-    {"SetMarkCell",                 MechanicsFunctions::SetMarkCell},\
+-    {"SetMarkPos",                  MechanicsFunctions::SetMarkPos},\
+-    {"SetMarkRot",                  MechanicsFunctions::SetMarkRot},\
+-    {"SetSelectedSpellId",          MechanicsFunctions::SetSelectedSpellId},\
+-    \
+-    {"AddAlliedPlayerForPlayer",    MechanicsFunctions::AddAlliedPlayerForPlayer},\
+-    \
+-    {"SendMarkLocation",            MechanicsFunctions::SendMarkLocation},\
+-    {"SendSelectedSpell",           MechanicsFunctions::SendSelectedSpell},\
+-    {"SendAlliedPlayers",           MechanicsFunctions::SendAlliedPlayers},\
++    {"GetMarkCell",                 SFP(MechanicsFunctions::GetMarkCell)},\
++    {"GetMarkPosX",                 SFP(MechanicsFunctions::GetMarkPosX)},\
++    {"GetMarkPosY",                 SFP(MechanicsFunctions::GetMarkPosY)},\
++    {"GetMarkPosZ",                 SFP(MechanicsFunctions::GetMarkPosZ)},\
++    {"GetMarkRotX",                 SFP(MechanicsFunctions::GetMarkRotX)},\
++    {"GetMarkRotZ",                 SFP(MechanicsFunctions::GetMarkRotZ)},\
++    {"GetSelectedSpellId",          SFP(MechanicsFunctions::GetSelectedSpellId)},\
++    \
++    {"DoesPlayerHavePlayerKiller",  SFP(MechanicsFunctions::DoesPlayerHavePlayerKiller)},\
++    {"GetPlayerKillerPid",          SFP(MechanicsFunctions::GetPlayerKillerPid)},\
++    {"GetPlayerKillerRefId",        SFP(MechanicsFunctions::GetPlayerKillerRefId)},\
++    {"GetPlayerKillerRefNum",       SFP(MechanicsFunctions::GetPlayerKillerRefNum)},\
++    {"GetPlayerKillerMpNum",        SFP(MechanicsFunctions::GetPlayerKillerMpNum)},\
++    {"GetPlayerKillerName",         SFP(MechanicsFunctions::GetPlayerKillerName)},\
++    \
++    {"GetDrawState",                SFP(MechanicsFunctions::GetDrawState)},\
++    {"GetSneakState",               SFP(MechanicsFunctions::GetSneakState)},\
++    \
++    {"SetMarkCell",                 SFP(MechanicsFunctions::SetMarkCell)},\
++    {"SetMarkPos",                  SFP(MechanicsFunctions::SetMarkPos)},\
++    {"SetMarkRot",                  SFP(MechanicsFunctions::SetMarkRot)},\
++    {"SetSelectedSpellId",          SFP(MechanicsFunctions::SetSelectedSpellId)},\
++    \
++    {"AddAlliedPlayerForPlayer",    SFP(MechanicsFunctions::AddAlliedPlayerForPlayer)},\
++    \
++    {"SendMarkLocation",            SFP(MechanicsFunctions::SendMarkLocation)},\
++    {"SendSelectedSpell",           SFP(MechanicsFunctions::SendSelectedSpell)},\
++    {"SendAlliedPlayers",           SFP(MechanicsFunctions::SendAlliedPlayers)},\
+     \
+-    {"Jail",                        MechanicsFunctions::Jail},\
+-    {"Resurrect",                   MechanicsFunctions::Resurrect},\
++    {"Jail",                        SFP(MechanicsFunctions::Jail)},\
++    {"Resurrect",                   SFP(MechanicsFunctions::Resurrect)},\
+     \
+-    {"GetDeathReason",              MechanicsFunctions::GetDeathReason},\
+-    {"GetPlayerKillerRefNumIndex",  MechanicsFunctions::GetPlayerKillerRefNumIndex}
++    {"GetDeathReason",              SFP(MechanicsFunctions::GetDeathReason)},\
++    {"GetPlayerKillerRefNumIndex",  SFP(MechanicsFunctions::GetPlayerKillerRefNumIndex)}
+ 
+ class MechanicsFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Miscellaneous.hpp b/apps/openmw-mp/Script/Functions/Miscellaneous.hpp
+--- a/apps/openmw-mp/Script/Functions/Miscellaneous.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Miscellaneous.hpp	2026-11-24 07:02:37.551254195 +0000
+@@ -4,14 +4,14 @@
+ #include "../Types.hpp"
+ 
+ #define MISCELLANEOUSAPI \
+-    {"GenerateRandomString",        MiscellaneousFunctions::GenerateRandomString},\
++    {"GenerateRandomString",        SFP(MiscellaneousFunctions::GenerateRandomString)},\
+     \
+-    {"GetSHA256Hash",               MiscellaneousFunctions::GetSHA256Hash},\
++    {"GetSHA256Hash",               SFP(MiscellaneousFunctions::GetSHA256Hash)},\
+     \
+-    {"GetLastPlayerId",             MiscellaneousFunctions::GetLastPlayerId},\
++    {"GetLastPlayerId",             SFP(MiscellaneousFunctions::GetLastPlayerId)},\
+     \
+-    {"GetCurrentMpNum",             MiscellaneousFunctions::GetCurrentMpNum},\
+-    {"SetCurrentMpNum",             MiscellaneousFunctions::SetCurrentMpNum}
++    {"GetCurrentMpNum",             SFP(MiscellaneousFunctions::GetCurrentMpNum)},\
++    {"SetCurrentMpNum",             SFP(MiscellaneousFunctions::SetCurrentMpNum)}
+ 
+ class MiscellaneousFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Objects.hpp b/apps/openmw-mp/Script/Functions/Objects.hpp
+--- a/apps/openmw-mp/Script/Functions/Objects.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Objects.hpp	2026-11-24 07:06:26.766136002 +0000
+@@ -2,189 +2,189 @@
+ #define OPENMW_OBJECTAPI_HPP
+ 
+ #define OBJECTAPI \
+-    {"ReadReceivedObjectList",                ObjectFunctions::ReadReceivedObjectList},\
++    {"ReadReceivedObjectList",                SFP(ObjectFunctions::ReadReceivedObjectList)},\
+     \
+-    {"ClearObjectList",                       ObjectFunctions::ClearObjectList},\
+-    {"SetObjectListPid",                      ObjectFunctions::SetObjectListPid},\
++    {"ClearObjectList",                       SFP(ObjectFunctions::ClearObjectList)},\
++    {"SetObjectListPid",                      SFP(ObjectFunctions::SetObjectListPid)},\
+     \
+-    {"CopyReceivedObjectListToStore",         ObjectFunctions::CopyReceivedObjectListToStore},\
++    {"CopyReceivedObjectListToStore",         SFP(ObjectFunctions::CopyReceivedObjectListToStore)},\
+     \
+-    {"GetObjectListSize",                     ObjectFunctions::GetObjectListSize},\
+-    {"GetObjectListOrigin",                   ObjectFunctions::GetObjectListOrigin},\
+-    {"GetObjectListClientScript",             ObjectFunctions::GetObjectListClientScript},\
+-    {"GetObjectListAction",                   ObjectFunctions::GetObjectListAction},\
+-    {"GetObjectListConsoleCommand",           ObjectFunctions::GetObjectListConsoleCommand},\
+-    {"GetObjectListContainerSubAction",       ObjectFunctions::GetObjectListContainerSubAction},\
+-    \
+-    {"IsObjectPlayer",                        ObjectFunctions::IsObjectPlayer},\
+-    {"GetObjectPid",                          ObjectFunctions::GetObjectPid},\
+-    {"GetObjectRefId",                        ObjectFunctions::GetObjectRefId},\
+-    {"GetObjectRefNum",                       ObjectFunctions::GetObjectRefNum},\
+-    {"GetObjectMpNum",                        ObjectFunctions::GetObjectMpNum},\
+-    {"GetObjectCount",                        ObjectFunctions::GetObjectCount},\
+-    {"GetObjectCharge",                       ObjectFunctions::GetObjectCharge},\
+-    {"GetObjectEnchantmentCharge",            ObjectFunctions::GetObjectEnchantmentCharge},\
+-    {"GetObjectSoul" ,                        ObjectFunctions::GetObjectSoul},\
+-    {"GetObjectGoldValue",                    ObjectFunctions::GetObjectGoldValue},\
+-    {"GetObjectScale",                        ObjectFunctions::GetObjectScale},\
+-    {"GetObjectSoundId",                      ObjectFunctions::GetObjectSoundId},\
+-    {"GetObjectState",                        ObjectFunctions::GetObjectState},\
+-    {"GetObjectDoorState",                    ObjectFunctions::GetObjectDoorState},\
+-    {"GetObjectLockLevel",                    ObjectFunctions::GetObjectLockLevel},\
+-    {"GetObjectDialogueChoiceType",           ObjectFunctions::GetObjectDialogueChoiceType},\
+-    {"GetObjectDialogueChoiceTopic",          ObjectFunctions::GetObjectDialogueChoiceTopic},\
+-    {"GetObjectGoldPool",                     ObjectFunctions::GetObjectGoldPool},\
+-    {"GetObjectLastGoldRestockHour",          ObjectFunctions::GetObjectLastGoldRestockHour},\
+-    {"GetObjectLastGoldRestockDay",           ObjectFunctions::GetObjectLastGoldRestockDay},\
+-    \
+-    {"DoesObjectHavePlayerActivating",        ObjectFunctions::DoesObjectHavePlayerActivating},\
+-    {"GetObjectActivatingPid",                ObjectFunctions::GetObjectActivatingPid},\
+-    {"GetObjectActivatingRefId",              ObjectFunctions::GetObjectActivatingRefId},\
+-    {"GetObjectActivatingRefNum",             ObjectFunctions::GetObjectActivatingRefNum},\
+-    {"GetObjectActivatingMpNum",              ObjectFunctions::GetObjectActivatingMpNum},\
+-    {"GetObjectActivatingName",               ObjectFunctions::GetObjectActivatingName},\
+-    \
+-    {"GetObjectHitSuccess",                   ObjectFunctions::GetObjectHitSuccess},\
+-    {"GetObjectHitDamage",                    ObjectFunctions::GetObjectHitDamage},\
+-    {"GetObjectHitBlock",                     ObjectFunctions::GetObjectHitBlock},\
+-    {"GetObjectHitKnockdown",                 ObjectFunctions::GetObjectHitKnockdown},\
+-    {"DoesObjectHavePlayerHitting",           ObjectFunctions::DoesObjectHavePlayerHitting},\
+-    {"GetObjectHittingPid",                   ObjectFunctions::GetObjectHittingPid},\
+-    {"GetObjectHittingRefId",                 ObjectFunctions::GetObjectHittingRefId},\
+-    {"GetObjectHittingRefNum",                ObjectFunctions::GetObjectHittingRefNum},\
+-    {"GetObjectHittingMpNum",                 ObjectFunctions::GetObjectHittingMpNum},\
+-    {"GetObjectHittingName",                  ObjectFunctions::GetObjectHittingName},\
+-    \
+-    {"GetObjectSummonState",                  ObjectFunctions::GetObjectSummonState},\
+-    {"GetObjectSummonEffectId",               ObjectFunctions::GetObjectSummonEffectId},\
+-    {"GetObjectSummonSpellId",                ObjectFunctions::GetObjectSummonSpellId},\
+-    {"GetObjectSummonDuration",               ObjectFunctions::GetObjectSummonDuration},\
+-    {"DoesObjectHavePlayerSummoner",          ObjectFunctions::DoesObjectHavePlayerSummoner},\
+-    {"GetObjectSummonerPid",                  ObjectFunctions::GetObjectSummonerPid},\
+-    {"GetObjectSummonerRefId",                ObjectFunctions::GetObjectSummonerRefId},\
+-    {"GetObjectSummonerRefNum",               ObjectFunctions::GetObjectSummonerRefNum},\
+-    {"GetObjectSummonerMpNum",                ObjectFunctions::GetObjectSummonerMpNum},\
+-    \
+-    {"GetObjectPosX",                         ObjectFunctions::GetObjectPosX},\
+-    {"GetObjectPosY",                         ObjectFunctions::GetObjectPosY},\
+-    {"GetObjectPosZ",                         ObjectFunctions::GetObjectPosZ},\
+-    {"GetObjectRotX",                         ObjectFunctions::GetObjectRotX},\
+-    {"GetObjectRotY",                         ObjectFunctions::GetObjectRotY},\
+-    {"GetObjectRotZ",                         ObjectFunctions::GetObjectRotZ},\
+-    \
+-    {"GetVideoFilename",                      ObjectFunctions::GetVideoFilename},\
+-    \
+-    {"GetClientLocalsSize",                   ObjectFunctions::GetClientLocalsSize},\
+-    {"GetClientLocalInternalIndex",           ObjectFunctions::GetClientLocalInternalIndex},\
+-    {"GetClientLocalVariableType",            ObjectFunctions::GetClientLocalVariableType},\
+-    {"GetClientLocalIntValue",                ObjectFunctions::GetClientLocalIntValue},\
+-    {"GetClientLocalFloatValue",              ObjectFunctions::GetClientLocalFloatValue},\
+-    \
+-    {"GetContainerChangesSize",               ObjectFunctions::GetContainerChangesSize},\
+-    {"GetContainerItemRefId",                 ObjectFunctions::GetContainerItemRefId},\
+-    {"GetContainerItemCount",                 ObjectFunctions::GetContainerItemCount},\
+-    {"GetContainerItemCharge",                ObjectFunctions::GetContainerItemCharge},\
+-    {"GetContainerItemEnchantmentCharge",     ObjectFunctions::GetContainerItemEnchantmentCharge},\
+-    {"GetContainerItemSoul",                  ObjectFunctions::GetContainerItemSoul},\
+-    {"GetContainerItemActionCount",           ObjectFunctions::GetContainerItemActionCount},\
+-    \
+-    {"DoesObjectHaveContainer",               ObjectFunctions::DoesObjectHaveContainer},\
+-    {"IsObjectDroppedByPlayer",               ObjectFunctions::IsObjectDroppedByPlayer},\
+-    \
+-    {"SetObjectListCell",                     ObjectFunctions::SetObjectListCell},\
+-    {"SetObjectListAction",                   ObjectFunctions::SetObjectListAction},\
+-    {"SetObjectListContainerSubAction",       ObjectFunctions::SetObjectListContainerSubAction},\
+-    {"SetObjectListConsoleCommand",           ObjectFunctions::SetObjectListConsoleCommand},\
+-    \
+-    {"SetObjectRefId",                        ObjectFunctions::SetObjectRefId},\
+-    {"SetObjectRefNum",                       ObjectFunctions::SetObjectRefNum},\
+-    {"SetObjectMpNum",                        ObjectFunctions::SetObjectMpNum},\
+-    {"SetObjectCount",                        ObjectFunctions::SetObjectCount},\
+-    {"SetObjectCharge",                       ObjectFunctions::SetObjectCharge},\
+-    {"SetObjectEnchantmentCharge",            ObjectFunctions::SetObjectEnchantmentCharge},\
+-    {"SetObjectSoul",                         ObjectFunctions::SetObjectSoul},\
+-    {"SetObjectGoldValue",                    ObjectFunctions::SetObjectGoldValue},\
+-    {"SetObjectScale",                        ObjectFunctions::SetObjectScale},\
+-    {"SetObjectState",                        ObjectFunctions::SetObjectState},\
+-    {"SetObjectLockLevel",                    ObjectFunctions::SetObjectLockLevel},\
+-    {"SetObjectDialogueChoiceType",           ObjectFunctions::SetObjectDialogueChoiceType},\
+-    {"SetObjectDialogueChoiceTopic",          ObjectFunctions::SetObjectDialogueChoiceTopic},\
+-    {"SetObjectGoldPool",                     ObjectFunctions::SetObjectGoldPool},\
+-    {"SetObjectLastGoldRestockHour",          ObjectFunctions::SetObjectLastGoldRestockHour},\
+-    {"SetObjectLastGoldRestockDay",           ObjectFunctions::SetObjectLastGoldRestockDay},\
+-    {"SetObjectDisarmState",                  ObjectFunctions::SetObjectDisarmState},\
+-    {"SetObjectDroppedByPlayerState",         ObjectFunctions::SetObjectDroppedByPlayerState},\
+-    {"SetObjectPosition",                     ObjectFunctions::SetObjectPosition},\
+-    {"SetObjectRotation",                     ObjectFunctions::SetObjectRotation},\
+-    {"SetObjectSound",                        ObjectFunctions::SetObjectSound},\
+-    \
+-    {"SetObjectSummonState",                  ObjectFunctions::SetObjectSummonState},\
+-    {"SetObjectSummonEffectId",               ObjectFunctions::SetObjectSummonEffectId},\
+-    {"SetObjectSummonSpellId",                ObjectFunctions::SetObjectSummonSpellId},\
+-    {"SetObjectSummonDuration",               ObjectFunctions::SetObjectSummonDuration},\
+-    {"SetObjectSummonerPid",                  ObjectFunctions::SetObjectSummonerPid},\
+-    {"SetObjectSummonerRefNum",               ObjectFunctions::SetObjectSummonerRefNum},\
+-    {"SetObjectSummonerMpNum",                ObjectFunctions::SetObjectSummonerMpNum},\
+-    \
+-    {"SetObjectActivatingPid",                ObjectFunctions::SetObjectActivatingPid},\
+-    \
+-    {"SetObjectDoorState",                    ObjectFunctions::SetObjectDoorState},\
+-    {"SetObjectDoorTeleportState",            ObjectFunctions::SetObjectDoorTeleportState},\
+-    {"SetObjectDoorDestinationCell",          ObjectFunctions::SetObjectDoorDestinationCell},\
+-    {"SetObjectDoorDestinationPosition",      ObjectFunctions::SetObjectDoorDestinationPosition},\
+-    {"SetObjectDoorDestinationRotation",      ObjectFunctions::SetObjectDoorDestinationRotation},\
+-    \
+-    {"SetPlayerAsObject",                     ObjectFunctions::SetPlayerAsObject},\
+-    \
+-    {"SetContainerItemRefId",                 ObjectFunctions::SetContainerItemRefId},\
+-    {"SetContainerItemCount",                 ObjectFunctions::SetContainerItemCount},\
+-    {"SetContainerItemCharge",                ObjectFunctions::SetContainerItemCharge},\
+-    {"SetContainerItemEnchantmentCharge",     ObjectFunctions::SetContainerItemEnchantmentCharge},\
+-    {"SetContainerItemSoul",                  ObjectFunctions::SetContainerItemSoul},\
+-    \
+-    {"SetContainerItemActionCountByIndex",    ObjectFunctions::SetContainerItemActionCountByIndex},\
+-    \
+-    {"AddObject",                             ObjectFunctions::AddObject},\
+-    {"AddClientLocalInteger",                 ObjectFunctions::AddClientLocalInteger},\
+-    {"AddClientLocalFloat",                   ObjectFunctions::AddClientLocalFloat},\
+-    {"AddContainerItem",                      ObjectFunctions::AddContainerItem},\
+-    \
+-    {"SendObjectActivate",                    ObjectFunctions::SendObjectActivate},\
+-    {"SendObjectPlace",                       ObjectFunctions::SendObjectPlace},\
+-    {"SendObjectSpawn",                       ObjectFunctions::SendObjectSpawn},\
+-    {"SendObjectDelete",                      ObjectFunctions::SendObjectDelete},\
+-    {"SendObjectLock",                        ObjectFunctions::SendObjectLock},\
+-    {"SendObjectDialogueChoice",              ObjectFunctions::SendObjectDialogueChoice},\
+-    {"SendObjectMiscellaneous",               ObjectFunctions::SendObjectMiscellaneous},\
+-    {"SendObjectRestock",                     ObjectFunctions::SendObjectRestock},\
+-    {"SendObjectTrap",                        ObjectFunctions::SendObjectTrap},\
+-    {"SendObjectScale",                       ObjectFunctions::SendObjectScale},\
+-    {"SendObjectSound",                       ObjectFunctions::SendObjectSound},\
+-    {"SendObjectState",                       ObjectFunctions::SendObjectState},\
+-    {"SendObjectMove",                        ObjectFunctions::SendObjectMove},\
+-    {"SendObjectRotate",                      ObjectFunctions::SendObjectRotate},\
+-    {"SendDoorState",                         ObjectFunctions::SendDoorState},\
+-    {"SendDoorDestination",                   ObjectFunctions::SendDoorDestination},\
+-    {"SendContainer",                         ObjectFunctions::SendContainer},\
+-    {"SendVideoPlay",                         ObjectFunctions::SendVideoPlay},\
+-    {"SendClientScriptLocal",                 ObjectFunctions::SendClientScriptLocal},\
+-    {"SendConsoleCommand",                    ObjectFunctions::SendConsoleCommand},\
+-    \
+-    {"ReadLastObjectList",                    ObjectFunctions::ReadLastObjectList},\
+-    {"ReadLastEvent",                         ObjectFunctions::ReadLastEvent},\
+-    {"InitializeObjectList",                  ObjectFunctions::InitializeObjectList},\
+-    {"InitializeEvent",                       ObjectFunctions::InitializeEvent},\
+-    {"CopyLastObjectListToStore",             ObjectFunctions::CopyLastObjectListToStore},\
+-    {"GetObjectChangesSize",                  ObjectFunctions::GetObjectChangesSize},\
+-    {"GetEventAction",                        ObjectFunctions::GetEventAction},\
+-    {"GetEventContainerSubAction",            ObjectFunctions::GetEventContainerSubAction},\
+-    {"GetObjectRefNumIndex",                  ObjectFunctions::GetObjectRefNumIndex},\
+-    {"GetObjectSummonerRefNumIndex",          ObjectFunctions::GetObjectSummonerRefNumIndex},\
+-    {"SetEventCell",                          ObjectFunctions::SetEventCell},\
+-    {"SetEventAction",                        ObjectFunctions::SetEventAction},\
+-    {"SetEventConsoleCommand",                ObjectFunctions::SetEventConsoleCommand},\
+-    {"SetObjectRefNumIndex",                  ObjectFunctions::SetObjectRefNumIndex},\
+-    {"AddWorldObject",                        ObjectFunctions::AddWorldObject}
++    {"GetObjectListSize",                     SFP(ObjectFunctions::GetObjectListSize)},\
++    {"GetObjectListOrigin",                   SFP(ObjectFunctions::GetObjectListOrigin)},\
++    {"GetObjectListClientScript",             SFP(ObjectFunctions::GetObjectListClientScript)},\
++    {"GetObjectListAction",                   SFP(ObjectFunctions::GetObjectListAction)},\
++    {"GetObjectListConsoleCommand",           SFP(ObjectFunctions::GetObjectListConsoleCommand)},\
++    {"GetObjectListContainerSubAction",       SFP(ObjectFunctions::GetObjectListContainerSubAction)},\
++    \
++    {"IsObjectPlayer",                        SFP(ObjectFunctions::IsObjectPlayer)},\
++    {"GetObjectPid",                          SFP(ObjectFunctions::GetObjectPid)},\
++    {"GetObjectRefId",                        SFP(ObjectFunctions::GetObjectRefId)},\
++    {"GetObjectRefNum",                       SFP(ObjectFunctions::GetObjectRefNum)},\
++    {"GetObjectMpNum",                        SFP(ObjectFunctions::GetObjectMpNum)},\
++    {"GetObjectCount",                        SFP(ObjectFunctions::GetObjectCount)},\
++    {"GetObjectCharge",                       SFP(ObjectFunctions::GetObjectCharge)},\
++    {"GetObjectEnchantmentCharge",            SFP(ObjectFunctions::GetObjectEnchantmentCharge)},\
++    {"GetObjectSoul", SFP(ObjectFunctions::GetObjectSoul)},\
++    {"GetObjectGoldValue",                    SFP(ObjectFunctions::GetObjectGoldValue)},\
++    {"GetObjectScale",                        SFP(ObjectFunctions::GetObjectScale)},\
++    {"GetObjectSoundId",                      SFP(ObjectFunctions::GetObjectSoundId)},\
++    {"GetObjectState",                        SFP(ObjectFunctions::GetObjectState)},\
++    {"GetObjectDoorState",                    SFP(ObjectFunctions::GetObjectDoorState)},\
++    {"GetObjectLockLevel",                    SFP(ObjectFunctions::GetObjectLockLevel)},\
++    {"GetObjectDialogueChoiceType",           SFP(ObjectFunctions::GetObjectDialogueChoiceType)},\
++    {"GetObjectDialogueChoiceTopic",          SFP(ObjectFunctions::GetObjectDialogueChoiceTopic)},\
++    {"GetObjectGoldPool",                     SFP(ObjectFunctions::GetObjectGoldPool)},\
++    {"GetObjectLastGoldRestockHour",          SFP(ObjectFunctions::GetObjectLastGoldRestockHour)},\
++    {"GetObjectLastGoldRestockDay",           SFP(ObjectFunctions::GetObjectLastGoldRestockDay)},\
++    \
++    {"DoesObjectHavePlayerActivating",        SFP(ObjectFunctions::DoesObjectHavePlayerActivating)},\
++    {"GetObjectActivatingPid",                SFP(ObjectFunctions::GetObjectActivatingPid)},\
++    {"GetObjectActivatingRefId",              SFP(ObjectFunctions::GetObjectActivatingRefId)},\
++    {"GetObjectActivatingRefNum",             SFP(ObjectFunctions::GetObjectActivatingRefNum)},\
++    {"GetObjectActivatingMpNum",              SFP(ObjectFunctions::GetObjectActivatingMpNum)},\
++    {"GetObjectActivatingName",               SFP(ObjectFunctions::GetObjectActivatingName)},\
++    \
++    {"GetObjectHitSuccess",                   SFP(ObjectFunctions::GetObjectHitSuccess)},\
++    {"GetObjectHitDamage",                    SFP(ObjectFunctions::GetObjectHitDamage)},\
++    {"GetObjectHitBlock",                     SFP(ObjectFunctions::GetObjectHitBlock)},\
++    {"GetObjectHitKnockdown",                 SFP(ObjectFunctions::GetObjectHitKnockdown)},\
++    {"DoesObjectHavePlayerHitting",           SFP(ObjectFunctions::DoesObjectHavePlayerHitting)},\
++    {"GetObjectHittingPid",                   SFP(ObjectFunctions::GetObjectHittingPid)},\
++    {"GetObjectHittingRefId",                 SFP(ObjectFunctions::GetObjectHittingRefId)},\
++    {"GetObjectHittingRefNum",                SFP(ObjectFunctions::GetObjectHittingRefNum)},\
++    {"GetObjectHittingMpNum",                 SFP(ObjectFunctions::GetObjectHittingMpNum)},\
++    {"GetObjectHittingName",                  SFP(ObjectFunctions::GetObjectHittingName)},\
++    \
++    {"GetObjectSummonState",                  SFP(ObjectFunctions::GetObjectSummonState)},\
++    {"GetObjectSummonEffectId",               SFP(ObjectFunctions::GetObjectSummonEffectId)},\
++    {"GetObjectSummonSpellId",                SFP(ObjectFunctions::GetObjectSummonSpellId)},\
++    {"GetObjectSummonDuration",               SFP(ObjectFunctions::GetObjectSummonDuration)},\
++    {"DoesObjectHavePlayerSummoner",          SFP(ObjectFunctions::DoesObjectHavePlayerSummoner)},\
++    {"GetObjectSummonerPid",                  SFP(ObjectFunctions::GetObjectSummonerPid)},\
++    {"GetObjectSummonerRefId",                SFP(ObjectFunctions::GetObjectSummonerRefId)},\
++    {"GetObjectSummonerRefNum",               SFP(ObjectFunctions::GetObjectSummonerRefNum)},\
++    {"GetObjectSummonerMpNum",                SFP(ObjectFunctions::GetObjectSummonerMpNum)},\
++    \
++    {"GetObjectPosX",                         SFP(ObjectFunctions::GetObjectPosX)},\
++    {"GetObjectPosY",                         SFP(ObjectFunctions::GetObjectPosY)},\
++    {"GetObjectPosZ",                         SFP(ObjectFunctions::GetObjectPosZ)},\
++    {"GetObjectRotX",                         SFP(ObjectFunctions::GetObjectRotX)},\
++    {"GetObjectRotY",                         SFP(ObjectFunctions::GetObjectRotY)},\
++    {"GetObjectRotZ",                         SFP(ObjectFunctions::GetObjectRotZ)},\
++    \
++    {"GetVideoFilename",                      SFP(ObjectFunctions::GetVideoFilename)},\
++    \
++    {"GetClientLocalsSize",                   SFP(ObjectFunctions::GetClientLocalsSize)},\
++    {"GetClientLocalInternalIndex",           SFP(ObjectFunctions::GetClientLocalInternalIndex)},\
++    {"GetClientLocalVariableType",            SFP(ObjectFunctions::GetClientLocalVariableType)},\
++    {"GetClientLocalIntValue",                SFP(ObjectFunctions::GetClientLocalIntValue)},\
++    {"GetClientLocalFloatValue",              SFP(ObjectFunctions::GetClientLocalFloatValue)},\
++    \
++    {"GetContainerChangesSize",               SFP(ObjectFunctions::GetContainerChangesSize)},\
++    {"GetContainerItemRefId",                 SFP(ObjectFunctions::GetContainerItemRefId)},\
++    {"GetContainerItemCount",                 SFP(ObjectFunctions::GetContainerItemCount)},\
++    {"GetContainerItemCharge",                SFP(ObjectFunctions::GetContainerItemCharge)},\
++    {"GetContainerItemEnchantmentCharge",     SFP(ObjectFunctions::GetContainerItemEnchantmentCharge)},\
++    {"GetContainerItemSoul",                  SFP(ObjectFunctions::GetContainerItemSoul)},\
++    {"GetContainerItemActionCount",           SFP(ObjectFunctions::GetContainerItemActionCount)},\
++    \
++    {"DoesObjectHaveContainer",               SFP(ObjectFunctions::DoesObjectHaveContainer)},\
++    {"IsObjectDroppedByPlayer",               SFP(ObjectFunctions::IsObjectDroppedByPlayer)},\
++    \
++    {"SetObjectListCell",                     SFP(ObjectFunctions::SetObjectListCell)},\
++    {"SetObjectListAction",                   SFP(ObjectFunctions::SetObjectListAction)},\
++    {"SetObjectListContainerSubAction",       SFP(ObjectFunctions::SetObjectListContainerSubAction)},\
++    {"SetObjectListConsoleCommand",           SFP(ObjectFunctions::SetObjectListConsoleCommand)},\
++    \
++    {"SetObjectRefId",                        SFP(ObjectFunctions::SetObjectRefId)},\
++    {"SetObjectRefNum",                       SFP(ObjectFunctions::SetObjectRefNum)},\
++    {"SetObjectMpNum",                        SFP(ObjectFunctions::SetObjectMpNum)},\
++    {"SetObjectCount",                        SFP(ObjectFunctions::SetObjectCount)},\
++    {"SetObjectCharge",                       SFP(ObjectFunctions::SetObjectCharge)},\
++    {"SetObjectEnchantmentCharge",            SFP(ObjectFunctions::SetObjectEnchantmentCharge)},\
++    {"SetObjectSoul",                         SFP(ObjectFunctions::SetObjectSoul)},\
++    {"SetObjectGoldValue",                    SFP(ObjectFunctions::SetObjectGoldValue)},\
++    {"SetObjectScale",                        SFP(ObjectFunctions::SetObjectScale)},\
++    {"SetObjectState",                        SFP(ObjectFunctions::SetObjectState)},\
++    {"SetObjectLockLevel",                    SFP(ObjectFunctions::SetObjectLockLevel)},\
++    {"SetObjectDialogueChoiceType",           SFP(ObjectFunctions::SetObjectDialogueChoiceType)},\
++    {"SetObjectDialogueChoiceTopic",          SFP(ObjectFunctions::SetObjectDialogueChoiceTopic)},\
++    {"SetObjectGoldPool",                     SFP(ObjectFunctions::SetObjectGoldPool)},\
++    {"SetObjectLastGoldRestockHour",          SFP(ObjectFunctions::SetObjectLastGoldRestockHour)},\
++    {"SetObjectLastGoldRestockDay",           SFP(ObjectFunctions::SetObjectLastGoldRestockDay)},\
++    {"SetObjectDisarmState",                  SFP(ObjectFunctions::SetObjectDisarmState)},\
++    {"SetObjectDroppedByPlayerState",         SFP(ObjectFunctions::SetObjectDroppedByPlayerState)},\
++    {"SetObjectPosition",                     SFP(ObjectFunctions::SetObjectPosition)},\
++    {"SetObjectRotation",                     SFP(ObjectFunctions::SetObjectRotation)},\
++    {"SetObjectSound",                        SFP(ObjectFunctions::SetObjectSound)},\
++    \
++    {"SetObjectSummonState",                  SFP(ObjectFunctions::SetObjectSummonState)},\
++    {"SetObjectSummonEffectId",               SFP(ObjectFunctions::SetObjectSummonEffectId)},\
++    {"SetObjectSummonSpellId",                SFP(ObjectFunctions::SetObjectSummonSpellId)},\
++    {"SetObjectSummonDuration",               SFP(ObjectFunctions::SetObjectSummonDuration)},\
++    {"SetObjectSummonerPid",                  SFP(ObjectFunctions::SetObjectSummonerPid)},\
++    {"SetObjectSummonerRefNum",               SFP(ObjectFunctions::SetObjectSummonerRefNum)},\
++    {"SetObjectSummonerMpNum",                SFP(ObjectFunctions::SetObjectSummonerMpNum)},\
++    \
++    {"SetObjectActivatingPid",                SFP(ObjectFunctions::SetObjectActivatingPid)},\
++    \
++    {"SetObjectDoorState",                    SFP(ObjectFunctions::SetObjectDoorState)},\
++    {"SetObjectDoorTeleportState",            SFP(ObjectFunctions::SetObjectDoorTeleportState)},\
++    {"SetObjectDoorDestinationCell",          SFP(ObjectFunctions::SetObjectDoorDestinationCell)},\
++    {"SetObjectDoorDestinationPosition",      SFP(ObjectFunctions::SetObjectDoorDestinationPosition)},\
++    {"SetObjectDoorDestinationRotation",      SFP(ObjectFunctions::SetObjectDoorDestinationRotation)},\
++    \
++    {"SetPlayerAsObject",                     SFP(ObjectFunctions::SetPlayerAsObject)},\
++    \
++    {"SetContainerItemRefId",                 SFP(ObjectFunctions::SetContainerItemRefId)},\
++    {"SetContainerItemCount",                 SFP(ObjectFunctions::SetContainerItemCount)},\
++    {"SetContainerItemCharge",                SFP(ObjectFunctions::SetContainerItemCharge)},\
++    {"SetContainerItemEnchantmentCharge",     SFP(ObjectFunctions::SetContainerItemEnchantmentCharge)},\
++    {"SetContainerItemSoul",                  SFP(ObjectFunctions::SetContainerItemSoul)},\
++    \
++    {"SetContainerItemActionCountByIndex",    SFP(ObjectFunctions::SetContainerItemActionCountByIndex)},\
++    \
++    {"AddObject",                             SFP(ObjectFunctions::AddObject)},\
++    {"AddClientLocalInteger",                 SFP(ObjectFunctions::AddClientLocalInteger)},\
++    {"AddClientLocalFloat",                   SFP(ObjectFunctions::AddClientLocalFloat)},\
++    {"AddContainerItem",                      SFP(ObjectFunctions::AddContainerItem)},\
++    \
++    {"SendObjectActivate",                    SFP(ObjectFunctions::SendObjectActivate)},\
++    {"SendObjectPlace",                       SFP(ObjectFunctions::SendObjectPlace)},\
++    {"SendObjectSpawn",                       SFP(ObjectFunctions::SendObjectSpawn)},\
++    {"SendObjectDelete",                      SFP(ObjectFunctions::SendObjectDelete)},\
++    {"SendObjectLock",                        SFP(ObjectFunctions::SendObjectLock)},\
++    {"SendObjectDialogueChoice",              SFP(ObjectFunctions::SendObjectDialogueChoice)},\
++    {"SendObjectMiscellaneous",               SFP(ObjectFunctions::SendObjectMiscellaneous)},\
++    {"SendObjectRestock",                     SFP(ObjectFunctions::SendObjectRestock)},\
++    {"SendObjectTrap",                        SFP(ObjectFunctions::SendObjectTrap)},\
++    {"SendObjectScale",                       SFP(ObjectFunctions::SendObjectScale)},\
++    {"SendObjectSound",                       SFP(ObjectFunctions::SendObjectSound)},\
++    {"SendObjectState",                       SFP(ObjectFunctions::SendObjectState)},\
++    {"SendObjectMove",                        SFP(ObjectFunctions::SendObjectMove)},\
++    {"SendObjectRotate",                      SFP(ObjectFunctions::SendObjectRotate)},\
++    {"SendDoorState",                         SFP(ObjectFunctions::SendDoorState)},\
++    {"SendDoorDestination",                   SFP(ObjectFunctions::SendDoorDestination)},\
++    {"SendContainer",                         SFP(ObjectFunctions::SendContainer)},\
++    {"SendVideoPlay",                         SFP(ObjectFunctions::SendVideoPlay)},\
++    {"SendClientScriptLocal",                 SFP(ObjectFunctions::SendClientScriptLocal)},\
++    {"SendConsoleCommand",                    SFP(ObjectFunctions::SendConsoleCommand)},\
++    \
++    {"ReadLastObjectList",                    SFP(ObjectFunctions::ReadLastObjectList)},\
++    {"ReadLastEvent",                         SFP(ObjectFunctions::ReadLastEvent)},\
++    {"InitializeObjectList",                  SFP(ObjectFunctions::InitializeObjectList)},\
++    {"InitializeEvent",                       SFP(ObjectFunctions::InitializeEvent)},\
++    {"CopyLastObjectListToStore",             SFP(ObjectFunctions::CopyLastObjectListToStore)},\
++    {"GetObjectChangesSize",                  SFP(ObjectFunctions::GetObjectChangesSize)},\
++    {"GetEventAction",                        SFP(ObjectFunctions::GetEventAction)},\
++    {"GetEventContainerSubAction",            SFP(ObjectFunctions::GetEventContainerSubAction)},\
++    {"GetObjectRefNumIndex",                  SFP(ObjectFunctions::GetObjectRefNumIndex)},\
++    {"GetObjectSummonerRefNumIndex",          SFP(ObjectFunctions::GetObjectSummonerRefNumIndex)},\
++    {"SetEventCell",                          SFP(ObjectFunctions::SetEventCell)},\
++    {"SetEventAction",                        SFP(ObjectFunctions::SetEventAction)},\
++    {"SetEventConsoleCommand",                SFP(ObjectFunctions::SetEventConsoleCommand)},\
++    {"SetObjectRefNumIndex",                  SFP(ObjectFunctions::SetObjectRefNumIndex)},\
++    {"AddWorldObject",                        SFP(ObjectFunctions::AddWorldObject)}
+ 
+ class ObjectFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Positions.hpp b/apps/openmw-mp/Script/Functions/Positions.hpp
+--- a/apps/openmw-mp/Script/Functions/Positions.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Positions.hpp	2026-11-24 07:02:37.552028694 +0000
+@@ -4,23 +4,23 @@
+ #include "../Types.hpp"
+ 
+ #define POSITIONAPI \
+-    {"GetPosX",             PositionFunctions::GetPosX},\
+-    {"GetPosY",             PositionFunctions::GetPosY},\
+-    {"GetPosZ",             PositionFunctions::GetPosZ},\
++    {"GetPosX",             SFP(PositionFunctions::GetPosX)},\
++    {"GetPosY",             SFP(PositionFunctions::GetPosY)},\
++    {"GetPosZ",             SFP(PositionFunctions::GetPosZ)},\
+     \
+-    {"GetPreviousCellPosX", PositionFunctions::GetPreviousCellPosX},\
+-    {"GetPreviousCellPosY", PositionFunctions::GetPreviousCellPosY},\
+-    {"GetPreviousCellPosZ", PositionFunctions::GetPreviousCellPosZ},\
++    {"GetPreviousCellPosX", SFP(PositionFunctions::GetPreviousCellPosX)},\
++    {"GetPreviousCellPosY", SFP(PositionFunctions::GetPreviousCellPosY)},\
++    {"GetPreviousCellPosZ", SFP(PositionFunctions::GetPreviousCellPosZ)},\
+     \
+-    {"GetRotX",             PositionFunctions::GetRotX},\
+-    {"GetRotZ",             PositionFunctions::GetRotZ},\
++    {"GetRotX",             SFP(PositionFunctions::GetRotX)},\
++    {"GetRotZ",             SFP(PositionFunctions::GetRotZ)},\
+     \
+-    {"SetPos",              PositionFunctions::SetPos},\
+-    {"SetRot",              PositionFunctions::SetRot},\
+-    {"SetMomentum",         PositionFunctions::SetMomentum},\
++    {"SetPos",              SFP(PositionFunctions::SetPos)},\
++    {"SetRot",              SFP(PositionFunctions::SetRot)},\
++    {"SetMomentum",         SFP(PositionFunctions::SetMomentum)},\
+     \
+-    {"SendPos",             PositionFunctions::SendPos},\
+-    {"SendMomentum",        PositionFunctions::SendMomentum}
++    {"SendPos",             SFP(PositionFunctions::SendPos)},\
++    {"SendMomentum",        SFP(PositionFunctions::SendMomentum)}
+ 
+ 
+ class PositionFunctions
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Quests.hpp b/apps/openmw-mp/Script/Functions/Quests.hpp
+--- a/apps/openmw-mp/Script/Functions/Quests.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Quests.hpp	2026-11-24 07:02:37.551129225 +0000
+@@ -2,27 +2,27 @@
+ #define OPENMW_QUESTAPI_HPP
+ 
+ #define QUESTAPI \
+-    {"ClearJournalChanges",               QuestFunctions::ClearJournalChanges},\
++    {"ClearJournalChanges",               SFP(QuestFunctions::ClearJournalChanges)},\
+     \
+-    {"GetJournalChangesSize",             QuestFunctions::GetJournalChangesSize},\
++    {"GetJournalChangesSize",             SFP(QuestFunctions::GetJournalChangesSize)},\
+     \
+-    {"AddJournalEntry",                   QuestFunctions::AddJournalEntry},\
+-    {"AddJournalEntryWithTimestamp",      QuestFunctions::AddJournalEntryWithTimestamp},\
+-    {"AddJournalIndex",                   QuestFunctions::AddJournalIndex},\
++    {"AddJournalEntry",                   SFP(QuestFunctions::AddJournalEntry)},\
++    {"AddJournalEntryWithTimestamp",      SFP(QuestFunctions::AddJournalEntryWithTimestamp)},\
++    {"AddJournalIndex",                   SFP(QuestFunctions::AddJournalIndex)},\
+     \
+-    {"SetReputation",                     QuestFunctions::SetReputation},\
++    {"SetReputation",                     SFP(QuestFunctions::SetReputation)},\
+     \
+-    {"GetJournalItemQuest",               QuestFunctions::GetJournalItemQuest},\
+-    {"GetJournalItemIndex",               QuestFunctions::GetJournalItemIndex},\
+-    {"GetJournalItemType",                QuestFunctions::GetJournalItemType},\
+-    {"GetJournalItemActorRefId",          QuestFunctions::GetJournalItemActorRefId},\
++    {"GetJournalItemQuest",               SFP(QuestFunctions::GetJournalItemQuest)},\
++    {"GetJournalItemIndex",               SFP(QuestFunctions::GetJournalItemIndex)},\
++    {"GetJournalItemType",                SFP(QuestFunctions::GetJournalItemType)},\
++    {"GetJournalItemActorRefId",          SFP(QuestFunctions::GetJournalItemActorRefId)},\
+     \
+-    {"GetReputation",                     QuestFunctions::GetReputation},\
++    {"GetReputation",                     SFP(QuestFunctions::GetReputation)},\
+     \
+-    {"SendJournalChanges",                QuestFunctions::SendJournalChanges},\
+-    {"SendReputation",                    QuestFunctions::SendReputation},\
++    {"SendJournalChanges",                SFP(QuestFunctions::SendJournalChanges)},\
++    {"SendReputation",                    SFP(QuestFunctions::SendReputation)},\
+     \
+-    {"InitializeJournalChanges",          QuestFunctions::InitializeJournalChanges}
++    {"InitializeJournalChanges",          SFP(QuestFunctions::InitializeJournalChanges)}
+ 
+ class QuestFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/RecordsDynamic.hpp b/apps/openmw-mp/Script/Functions/RecordsDynamic.hpp
+--- a/apps/openmw-mp/Script/Functions/RecordsDynamic.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/RecordsDynamic.hpp	2026-11-24 07:02:37.550995246 +0000
+@@ -4,139 +4,139 @@
+ #include "../Types.hpp"
+ 
+ #define RECORDSDYNAMICAPI \
+-    {"ClearRecords",                            RecordsDynamicFunctions::ClearRecords},\
++    {"ClearRecords",                            SFP(RecordsDynamicFunctions::ClearRecords)},\
+     \
+-    {"GetRecordType",                           RecordsDynamicFunctions::GetRecordType},\
+-    {"GetRecordCount",                          RecordsDynamicFunctions::GetRecordCount},\
+-    {"GetRecordEffectCount",                    RecordsDynamicFunctions::GetRecordEffectCount},\
+-    \
+-    {"GetRecordId",                             RecordsDynamicFunctions::GetRecordId},\
+-    {"GetRecordBaseId",                         RecordsDynamicFunctions::GetRecordBaseId},\
+-    \
+-    {"GetRecordSubtype",                        RecordsDynamicFunctions::GetRecordSubtype},\
+-    {"GetRecordName",                           RecordsDynamicFunctions::GetRecordName},\
+-    {"GetRecordModel",                          RecordsDynamicFunctions::GetRecordModel},\
+-    {"GetRecordIcon",                           RecordsDynamicFunctions::GetRecordIcon},\
+-    {"GetRecordScript",                         RecordsDynamicFunctions::GetRecordScript},\
+-    {"GetRecordEnchantmentId",                  RecordsDynamicFunctions::GetRecordEnchantmentId},\
+-    {"GetRecordEnchantmentCharge",              RecordsDynamicFunctions::GetRecordEnchantmentCharge},\
+-    \
+-    {"GetRecordAutoCalc",                       RecordsDynamicFunctions::GetRecordAutoCalc},\
+-    {"GetRecordCharge",                         RecordsDynamicFunctions::GetRecordCharge},\
+-    {"GetRecordCost",                           RecordsDynamicFunctions::GetRecordCost},\
+-    {"GetRecordFlags",                          RecordsDynamicFunctions::GetRecordFlags},\
+-    {"GetRecordValue",                          RecordsDynamicFunctions::GetRecordValue},\
+-    {"GetRecordWeight",                         RecordsDynamicFunctions::GetRecordWeight},\
+-    {"GetRecordQuantity",                       RecordsDynamicFunctions::GetRecordQuantity},\
+-    \
+-    {"GetRecordEffectId",                       RecordsDynamicFunctions::GetRecordEffectId},\
+-    {"GetRecordEffectAttribute",                RecordsDynamicFunctions::GetRecordEffectAttribute},\
+-    {"GetRecordEffectSkill",                    RecordsDynamicFunctions::GetRecordEffectSkill},\
+-    {"GetRecordEffectRangeType",                RecordsDynamicFunctions::GetRecordEffectRangeType},\
+-    {"GetRecordEffectArea",                     RecordsDynamicFunctions::GetRecordEffectArea},\
+-    {"GetRecordEffectDuration",                 RecordsDynamicFunctions::GetRecordEffectDuration},\
+-    {"GetRecordEffectMagnitudeMax",             RecordsDynamicFunctions::GetRecordEffectMagnitudeMax},\
+-    {"GetRecordEffectMagnitudeMin",             RecordsDynamicFunctions::GetRecordEffectMagnitudeMin},\
+-    \
+-    {"SetRecordType",                           RecordsDynamicFunctions::SetRecordType},\
+-    \
+-    {"SetRecordId",                             RecordsDynamicFunctions::SetRecordId},\
+-    {"SetRecordBaseId",                         RecordsDynamicFunctions::SetRecordBaseId},\
+-    {"SetRecordInventoryBaseId",                RecordsDynamicFunctions::SetRecordInventoryBaseId},\
+-    \
+-    {"SetRecordSubtype",                        RecordsDynamicFunctions::SetRecordSubtype},\
+-    {"SetRecordName",                           RecordsDynamicFunctions::SetRecordName},\
+-    {"SetRecordModel",                          RecordsDynamicFunctions::SetRecordModel},\
+-    {"SetRecordIcon",                           RecordsDynamicFunctions::SetRecordIcon},\
+-    {"SetRecordScript",                         RecordsDynamicFunctions::SetRecordScript},\
+-    {"SetRecordEnchantmentId",                  RecordsDynamicFunctions::SetRecordEnchantmentId},\
+-    {"SetRecordEnchantmentCharge",              RecordsDynamicFunctions::SetRecordEnchantmentCharge},\
+-    \
+-    {"SetRecordAutoCalc",                       RecordsDynamicFunctions::SetRecordAutoCalc},\
+-    {"SetRecordCharge",                         RecordsDynamicFunctions::SetRecordCharge},\
+-    {"SetRecordCost",                           RecordsDynamicFunctions::SetRecordCost},\
+-    {"SetRecordFlags",                          RecordsDynamicFunctions::SetRecordFlags},\
+-    {"SetRecordValue",                          RecordsDynamicFunctions::SetRecordValue},\
+-    {"SetRecordWeight",                         RecordsDynamicFunctions::SetRecordWeight},\
+-    {"SetRecordQuality",                        RecordsDynamicFunctions::SetRecordQuality},\
+-    {"SetRecordUses",                           RecordsDynamicFunctions::SetRecordUses},\
+-    {"SetRecordTime",                           RecordsDynamicFunctions::SetRecordTime},\
+-    {"SetRecordRadius",                         RecordsDynamicFunctions::SetRecordRadius},\
+-    {"SetRecordColor",                          RecordsDynamicFunctions::SetRecordColor},\
+-    \
+-    {"SetRecordArmorRating",                    RecordsDynamicFunctions::SetRecordArmorRating},\
+-    {"SetRecordHealth",                         RecordsDynamicFunctions::SetRecordHealth},\
+-    \
+-    {"SetRecordDamageChop",                     RecordsDynamicFunctions::SetRecordDamageChop},\
+-    {"SetRecordDamageSlash",                    RecordsDynamicFunctions::SetRecordDamageSlash},\
+-    {"SetRecordDamageThrust",                   RecordsDynamicFunctions::SetRecordDamageThrust},\
+-    {"SetRecordReach",                          RecordsDynamicFunctions::SetRecordReach},\
+-    {"SetRecordSpeed",                          RecordsDynamicFunctions::SetRecordSpeed},\
+-    \
+-    {"SetRecordKeyState",                       RecordsDynamicFunctions::SetRecordKeyState},\
+-    {"SetRecordScrollState",                    RecordsDynamicFunctions::SetRecordScrollState},\
+-    {"SetRecordSkillId",                        RecordsDynamicFunctions::SetRecordSkillId},\
+-    {"SetRecordText",                           RecordsDynamicFunctions::SetRecordText},\
+-    \
+-    {"SetRecordHair",                           RecordsDynamicFunctions::SetRecordHair},\
+-    {"SetRecordHead",                           RecordsDynamicFunctions::SetRecordHead},\
+-    {"SetRecordGender",                         RecordsDynamicFunctions::SetRecordGender},\
+-    {"SetRecordRace",                           RecordsDynamicFunctions::SetRecordRace},\
+-    {"SetRecordClass",                          RecordsDynamicFunctions::SetRecordClass},\
+-    {"SetRecordFaction",                        RecordsDynamicFunctions::SetRecordFaction},\
+-    \
+-    {"SetRecordScale",                          RecordsDynamicFunctions::SetRecordScale},\
+-    {"SetRecordBloodType",                      RecordsDynamicFunctions::SetRecordBloodType},\
+-    {"SetRecordVampireState",                   RecordsDynamicFunctions::SetRecordVampireState},\
+-    \
+-    {"SetRecordLevel",                          RecordsDynamicFunctions::SetRecordLevel},\
+-    {"SetRecordMagicka",                        RecordsDynamicFunctions::SetRecordMagicka},\
+-    {"SetRecordFatigue",                        RecordsDynamicFunctions::SetRecordFatigue},\
+-    \
+-    {"SetRecordSoulValue",                      RecordsDynamicFunctions::SetRecordSoulValue},\
+-    \
+-    {"SetRecordAIFight",                        RecordsDynamicFunctions::SetRecordAIFight},\
+-    {"SetRecordAIFlee",                         RecordsDynamicFunctions::SetRecordAIFlee},\
+-    {"SetRecordAIAlarm",                        RecordsDynamicFunctions::SetRecordAIAlarm},\
+-    {"SetRecordAIServices",                     RecordsDynamicFunctions::SetRecordAIServices},\
+-    \
+-    {"SetRecordSound",                          RecordsDynamicFunctions::SetRecordSound},\
+-    {"SetRecordVolume",                         RecordsDynamicFunctions::SetRecordVolume},\
+-    {"SetRecordMinRange",                       RecordsDynamicFunctions::SetRecordMinRange},\
+-    {"SetRecordMaxRange",                       RecordsDynamicFunctions::SetRecordMaxRange},\
+-    {"SetRecordOpenSound",                      RecordsDynamicFunctions::SetRecordOpenSound},\
+-    {"SetRecordCloseSound",                     RecordsDynamicFunctions::SetRecordCloseSound},\
+-    \
+-    {"SetRecordScriptText",                     RecordsDynamicFunctions::SetRecordScriptText},\
+-    {"SetRecordIntegerVariable",                RecordsDynamicFunctions::SetRecordIntegerVariable},\
+-    {"SetRecordFloatVariable",                  RecordsDynamicFunctions::SetRecordFloatVariable},\
+-    {"SetRecordStringVariable",                 RecordsDynamicFunctions::SetRecordStringVariable},\
+-    \
+-    {"SetRecordIdByIndex",                      RecordsDynamicFunctions::SetRecordIdByIndex},\
+-    {"SetRecordEnchantmentIdByIndex",           RecordsDynamicFunctions::SetRecordEnchantmentIdByIndex},\
+-    \
+-    {"SetRecordEffectId",                       RecordsDynamicFunctions::SetRecordEffectId},\
+-    {"SetRecordEffectAttribute",                RecordsDynamicFunctions::SetRecordEffectAttribute},\
+-    {"SetRecordEffectSkill",                    RecordsDynamicFunctions::SetRecordEffectSkill},\
+-    {"SetRecordEffectRangeType",                RecordsDynamicFunctions::SetRecordEffectRangeType},\
+-    {"SetRecordEffectArea",                     RecordsDynamicFunctions::SetRecordEffectArea},\
+-    {"SetRecordEffectDuration",                 RecordsDynamicFunctions::SetRecordEffectDuration},\
+-    {"SetRecordEffectMagnitudeMax",             RecordsDynamicFunctions::SetRecordEffectMagnitudeMax},\
+-    {"SetRecordEffectMagnitudeMin",             RecordsDynamicFunctions::SetRecordEffectMagnitudeMin},\
+-    \
+-    {"SetRecordBodyPartType",                   RecordsDynamicFunctions::SetRecordBodyPartType},\
+-    {"SetRecordBodyPartIdForMale",              RecordsDynamicFunctions::SetRecordBodyPartIdForMale},\
+-    {"SetRecordBodyPartIdForFemale",            RecordsDynamicFunctions::SetRecordBodyPartIdForFemale},\
+-    \
+-    {"SetRecordInventoryItemId",                RecordsDynamicFunctions::SetRecordInventoryItemId},\
+-    {"SetRecordInventoryItemCount",             RecordsDynamicFunctions::SetRecordInventoryItemCount},\
+-    \
+-    {"AddRecord",                               RecordsDynamicFunctions::AddRecord},\
+-    {"AddRecordEffect",                         RecordsDynamicFunctions::AddRecordEffect},\
+-    {"AddRecordBodyPart",                       RecordsDynamicFunctions::AddRecordBodyPart},\
+-    {"AddRecordInventoryItem",                  RecordsDynamicFunctions::AddRecordInventoryItem},\
++    {"GetRecordType",                           SFP(RecordsDynamicFunctions::GetRecordType)},\
++    {"GetRecordCount",                          SFP(RecordsDynamicFunctions::GetRecordCount)},\
++    {"GetRecordEffectCount",                    SFP(RecordsDynamicFunctions::GetRecordEffectCount)},\
++    \
++    {"GetRecordId",                             SFP(RecordsDynamicFunctions::GetRecordId)},\
++    {"GetRecordBaseId",                         SFP(RecordsDynamicFunctions::GetRecordBaseId)},\
++    \
++    {"GetRecordSubtype",                        SFP(RecordsDynamicFunctions::GetRecordSubtype)},\
++    {"GetRecordName",                           SFP(RecordsDynamicFunctions::GetRecordName)},\
++    {"GetRecordModel",                          SFP(RecordsDynamicFunctions::GetRecordModel)},\
++    {"GetRecordIcon",                           SFP(RecordsDynamicFunctions::GetRecordIcon)},\
++    {"GetRecordScript",                         SFP(RecordsDynamicFunctions::GetRecordScript)},\
++    {"GetRecordEnchantmentId",                  SFP(RecordsDynamicFunctions::GetRecordEnchantmentId)},\
++    {"GetRecordEnchantmentCharge",              SFP(RecordsDynamicFunctions::GetRecordEnchantmentCharge)},\
++    \
++    {"GetRecordAutoCalc",                       SFP(RecordsDynamicFunctions::GetRecordAutoCalc)},\
++    {"GetRecordCharge",                         SFP(RecordsDynamicFunctions::GetRecordCharge)},\
++    {"GetRecordCost",                           SFP(RecordsDynamicFunctions::GetRecordCost)},\
++    {"GetRecordFlags",                          SFP(RecordsDynamicFunctions::GetRecordFlags)},\
++    {"GetRecordValue",                          SFP(RecordsDynamicFunctions::GetRecordValue)},\
++    {"GetRecordWeight",                         SFP(RecordsDynamicFunctions::GetRecordWeight)},\
++    {"GetRecordQuantity",                       SFP(RecordsDynamicFunctions::GetRecordQuantity)},\
++    \
++    {"GetRecordEffectId",                       SFP(RecordsDynamicFunctions::GetRecordEffectId)},\
++    {"GetRecordEffectAttribute",                SFP(RecordsDynamicFunctions::GetRecordEffectAttribute)},\
++    {"GetRecordEffectSkill",                    SFP(RecordsDynamicFunctions::GetRecordEffectSkill)},\
++    {"GetRecordEffectRangeType",                SFP(RecordsDynamicFunctions::GetRecordEffectRangeType)},\
++    {"GetRecordEffectArea",                     SFP(RecordsDynamicFunctions::GetRecordEffectArea)},\
++    {"GetRecordEffectDuration",                 SFP(RecordsDynamicFunctions::GetRecordEffectDuration)},\
++    {"GetRecordEffectMagnitudeMax",             SFP(RecordsDynamicFunctions::GetRecordEffectMagnitudeMax)},\
++    {"GetRecordEffectMagnitudeMin",             SFP(RecordsDynamicFunctions::GetRecordEffectMagnitudeMin)},\
++    \
++    {"SetRecordType",                           SFP(RecordsDynamicFunctions::SetRecordType)},\
++    \
++    {"SetRecordId",                             SFP(RecordsDynamicFunctions::SetRecordId)},\
++    {"SetRecordBaseId",                         SFP(RecordsDynamicFunctions::SetRecordBaseId)},\
++    {"SetRecordInventoryBaseId",                SFP(RecordsDynamicFunctions::SetRecordInventoryBaseId)},\
++    \
++    {"SetRecordSubtype",                        SFP(RecordsDynamicFunctions::SetRecordSubtype)},\
++    {"SetRecordName",                           SFP(RecordsDynamicFunctions::SetRecordName)},\
++    {"SetRecordModel",                          SFP(RecordsDynamicFunctions::SetRecordModel)},\
++    {"SetRecordIcon",                           SFP(RecordsDynamicFunctions::SetRecordIcon)},\
++    {"SetRecordScript",                         SFP(RecordsDynamicFunctions::SetRecordScript)},\
++    {"SetRecordEnchantmentId",                  SFP(RecordsDynamicFunctions::SetRecordEnchantmentId)},\
++    {"SetRecordEnchantmentCharge",              SFP(RecordsDynamicFunctions::SetRecordEnchantmentCharge)},\
++    \
++    {"SetRecordAutoCalc",                       SFP(RecordsDynamicFunctions::SetRecordAutoCalc)},\
++    {"SetRecordCharge",                         SFP(RecordsDynamicFunctions::SetRecordCharge)},\
++    {"SetRecordCost",                           SFP(RecordsDynamicFunctions::SetRecordCost)},\
++    {"SetRecordFlags",                          SFP(RecordsDynamicFunctions::SetRecordFlags)},\
++    {"SetRecordValue",                          SFP(RecordsDynamicFunctions::SetRecordValue)},\
++    {"SetRecordWeight",                         SFP(RecordsDynamicFunctions::SetRecordWeight)},\
++    {"SetRecordQuality",                        SFP(RecordsDynamicFunctions::SetRecordQuality)},\
++    {"SetRecordUses",                           SFP(RecordsDynamicFunctions::SetRecordUses)},\
++    {"SetRecordTime",                           SFP(RecordsDynamicFunctions::SetRecordTime)},\
++    {"SetRecordRadius",                         SFP(RecordsDynamicFunctions::SetRecordRadius)},\
++    {"SetRecordColor",                          SFP(RecordsDynamicFunctions::SetRecordColor)},\
++    \
++    {"SetRecordArmorRating",                    SFP(RecordsDynamicFunctions::SetRecordArmorRating)},\
++    {"SetRecordHealth",                         SFP(RecordsDynamicFunctions::SetRecordHealth)},\
++    \
++    {"SetRecordDamageChop",                     SFP(RecordsDynamicFunctions::SetRecordDamageChop)},\
++    {"SetRecordDamageSlash",                    SFP(RecordsDynamicFunctions::SetRecordDamageSlash)},\
++    {"SetRecordDamageThrust",                   SFP(RecordsDynamicFunctions::SetRecordDamageThrust)},\
++    {"SetRecordReach",                          SFP(RecordsDynamicFunctions::SetRecordReach)},\
++    {"SetRecordSpeed",                          SFP(RecordsDynamicFunctions::SetRecordSpeed)},\
++    \
++    {"SetRecordKeyState",                       SFP(RecordsDynamicFunctions::SetRecordKeyState)},\
++    {"SetRecordScrollState",                    SFP(RecordsDynamicFunctions::SetRecordScrollState)},\
++    {"SetRecordSkillId",                        SFP(RecordsDynamicFunctions::SetRecordSkillId)},\
++    {"SetRecordText",                           SFP(RecordsDynamicFunctions::SetRecordText)},\
++    \
++    {"SetRecordHair",                           SFP(RecordsDynamicFunctions::SetRecordHair)},\
++    {"SetRecordHead",                           SFP(RecordsDynamicFunctions::SetRecordHead)},\
++    {"SetRecordGender",                         SFP(RecordsDynamicFunctions::SetRecordGender)},\
++    {"SetRecordRace",                           SFP(RecordsDynamicFunctions::SetRecordRace)},\
++    {"SetRecordClass",                          SFP(RecordsDynamicFunctions::SetRecordClass)},\
++    {"SetRecordFaction",                        SFP(RecordsDynamicFunctions::SetRecordFaction)},\
++    \
++    {"SetRecordScale",                          SFP(RecordsDynamicFunctions::SetRecordScale)},\
++    {"SetRecordBloodType",                      SFP(RecordsDynamicFunctions::SetRecordBloodType)},\
++    {"SetRecordVampireState",                   SFP(RecordsDynamicFunctions::SetRecordVampireState)},\
++    \
++    {"SetRecordLevel",                          SFP(RecordsDynamicFunctions::SetRecordLevel)},\
++    {"SetRecordMagicka",                        SFP(RecordsDynamicFunctions::SetRecordMagicka)},\
++    {"SetRecordFatigue",                        SFP(RecordsDynamicFunctions::SetRecordFatigue)},\
++    \
++    {"SetRecordSoulValue",                      SFP(RecordsDynamicFunctions::SetRecordSoulValue)},\
++    \
++    {"SetRecordAIFight",                        SFP(RecordsDynamicFunctions::SetRecordAIFight)},\
++    {"SetRecordAIFlee",                         SFP(RecordsDynamicFunctions::SetRecordAIFlee)},\
++    {"SetRecordAIAlarm",                        SFP(RecordsDynamicFunctions::SetRecordAIAlarm)},\
++    {"SetRecordAIServices",                     SFP(RecordsDynamicFunctions::SetRecordAIServices)},\
++    \
++    {"SetRecordSound",                          SFP(RecordsDynamicFunctions::SetRecordSound)},\
++    {"SetRecordVolume",                         SFP(RecordsDynamicFunctions::SetRecordVolume)},\
++    {"SetRecordMinRange",                       SFP(RecordsDynamicFunctions::SetRecordMinRange)},\
++    {"SetRecordMaxRange",                       SFP(RecordsDynamicFunctions::SetRecordMaxRange)},\
++    {"SetRecordOpenSound",                      SFP(RecordsDynamicFunctions::SetRecordOpenSound)},\
++    {"SetRecordCloseSound",                     SFP(RecordsDynamicFunctions::SetRecordCloseSound)},\
++    \
++    {"SetRecordScriptText",                     SFP(RecordsDynamicFunctions::SetRecordScriptText)},\
++    {"SetRecordIntegerVariable",                SFP(RecordsDynamicFunctions::SetRecordIntegerVariable)},\
++    {"SetRecordFloatVariable",                  SFP(RecordsDynamicFunctions::SetRecordFloatVariable)},\
++    {"SetRecordStringVariable",                 SFP(RecordsDynamicFunctions::SetRecordStringVariable)},\
++    \
++    {"SetRecordIdByIndex",                      SFP(RecordsDynamicFunctions::SetRecordIdByIndex)},\
++    {"SetRecordEnchantmentIdByIndex",           SFP(RecordsDynamicFunctions::SetRecordEnchantmentIdByIndex)},\
++    \
++    {"SetRecordEffectId",                       SFP(RecordsDynamicFunctions::SetRecordEffectId)},\
++    {"SetRecordEffectAttribute",                SFP(RecordsDynamicFunctions::SetRecordEffectAttribute)},\
++    {"SetRecordEffectSkill",                    SFP(RecordsDynamicFunctions::SetRecordEffectSkill)},\
++    {"SetRecordEffectRangeType",                SFP(RecordsDynamicFunctions::SetRecordEffectRangeType)},\
++    {"SetRecordEffectArea",                     SFP(RecordsDynamicFunctions::SetRecordEffectArea)},\
++    {"SetRecordEffectDuration",                 SFP(RecordsDynamicFunctions::SetRecordEffectDuration)},\
++    {"SetRecordEffectMagnitudeMax",             SFP(RecordsDynamicFunctions::SetRecordEffectMagnitudeMax)},\
++    {"SetRecordEffectMagnitudeMin",             SFP(RecordsDynamicFunctions::SetRecordEffectMagnitudeMin)},\
++    \
++    {"SetRecordBodyPartType",                   SFP(RecordsDynamicFunctions::SetRecordBodyPartType)},\
++    {"SetRecordBodyPartIdForMale",              SFP(RecordsDynamicFunctions::SetRecordBodyPartIdForMale)},\
++    {"SetRecordBodyPartIdForFemale",            SFP(RecordsDynamicFunctions::SetRecordBodyPartIdForFemale)},\
++    \
++    {"SetRecordInventoryItemId",                SFP(RecordsDynamicFunctions::SetRecordInventoryItemId)},\
++    {"SetRecordInventoryItemCount",             SFP(RecordsDynamicFunctions::SetRecordInventoryItemCount)},\
++    \
++    {"AddRecord",                               SFP(RecordsDynamicFunctions::AddRecord)},\
++    {"AddRecordEffect",                         SFP(RecordsDynamicFunctions::AddRecordEffect)},\
++    {"AddRecordBodyPart",                       SFP(RecordsDynamicFunctions::AddRecordBodyPart)},\
++    {"AddRecordInventoryItem",                  SFP(RecordsDynamicFunctions::AddRecordInventoryItem)},\
+     \
+-    {"SendRecordDynamic",                       RecordsDynamicFunctions::SendRecordDynamic}
++    {"SendRecordDynamic",                       SFP(RecordsDynamicFunctions::SendRecordDynamic)}
+ 
+ class RecordsDynamicFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Server.hpp b/apps/openmw-mp/Script/Functions/Server.hpp
+--- a/apps/openmw-mp/Script/Functions/Server.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Server.hpp	2026-11-24 07:02:37.550277506 +0000
+@@ -4,46 +4,46 @@
+ #include "../Types.hpp"
+ 
+ #define SERVERAPI \
+-    {"LogMessage",                      ServerFunctions::LogMessage},\
+-    {"LogAppend",                       ServerFunctions::LogAppend},\
++    {"LogMessage",                      SFP(ServerFunctions::LogMessage)},\
++    {"LogAppend",                       SFP(ServerFunctions::LogAppend)},\
+     \
+-    {"StopServer",                      ServerFunctions::StopServer},\
++    {"StopServer",                      SFP(ServerFunctions::StopServer)},\
+     \
+-    {"Kick",                            ServerFunctions::Kick},\
+-    {"BanAddress",                      ServerFunctions::BanAddress},\
+-    {"UnbanAddress",                    ServerFunctions::UnbanAddress},\
+-    \
+-    {"DoesFilePathExist",               ServerFunctions::DoesFilePathExist},\
+-    {"GetCaseInsensitiveFilename",      ServerFunctions::GetCaseInsensitiveFilename},\
+-    {"GetDataPath",                     ServerFunctions::GetDataPath},\
+-    {"GetMillisecondsSinceServerStart", ServerFunctions::GetMillisecondsSinceServerStart},\
+-    {"GetOperatingSystemType",          ServerFunctions::GetOperatingSystemType},\
+-    {"GetArchitectureType",             ServerFunctions::GetArchitectureType},\
+-    {"GetServerVersion",                ServerFunctions::GetServerVersion},\
+-    {"GetProtocolVersion",              ServerFunctions::GetProtocolVersion},\
+-    {"GetAvgPing",                      ServerFunctions::GetAvgPing},\
+-    {"GetIP",                           ServerFunctions::GetIP},\
+-    {"GetMaxPlayers",                   ServerFunctions::GetMaxPlayers},\
+-    {"GetPort",                         ServerFunctions::GetPort},\
+-    {"HasPassword",                     ServerFunctions::HasPassword},\
+-    {"GetDataFileEnforcementState",     ServerFunctions::GetDataFileEnforcementState},\
+-    {"GetScriptErrorIgnoringState",     ServerFunctions::GetScriptErrorIgnoringState},\
+-    \
+-    {"SetGameMode",                     ServerFunctions::SetGameMode},\
+-    {"SetHostname",                     ServerFunctions::SetHostname},\
+-    {"SetServerPassword",               ServerFunctions::SetServerPassword},\
+-    {"SetDataFileEnforcementState",     ServerFunctions::SetDataFileEnforcementState},\
+-    {"SetScriptErrorIgnoringState",     ServerFunctions::SetScriptErrorIgnoringState},\
+-    {"SetRuleString",                   ServerFunctions::SetRuleString},\
+-    {"SetRuleValue",                    ServerFunctions::SetRuleValue},\
+-    \
+-    {"AddDataFileRequirement",          ServerFunctions::AddDataFileRequirement},\
+-    \
+-    {"DoesFileExist",                   ServerFunctions::DoesFileExist},\
+-    {"GetModDir",                       ServerFunctions::GetModDir},\
+-    {"GetPluginEnforcementState",       ServerFunctions::GetPluginEnforcementState},\
+-    {"SetPluginEnforcementState",       ServerFunctions::SetPluginEnforcementState},\
+-    {"AddPluginHash",                   ServerFunctions::AddPluginHash}
++    {"Kick",                            SFP(ServerFunctions::Kick)},\
++    {"BanAddress",                      SFP(ServerFunctions::BanAddress)},\
++    {"UnbanAddress",                    SFP(ServerFunctions::UnbanAddress)},\
++    \
++    {"DoesFilePathExist",               SFP(ServerFunctions::DoesFilePathExist)},\
++    {"GetCaseInsensitiveFilename",      SFP(ServerFunctions::GetCaseInsensitiveFilename)},\
++    {"GetDataPath",                     SFP(ServerFunctions::GetDataPath)},\
++    {"GetMillisecondsSinceServerStart", SFP(ServerFunctions::GetMillisecondsSinceServerStart)},\
++    {"GetOperatingSystemType",          SFP(ServerFunctions::GetOperatingSystemType)},\
++    {"GetArchitectureType",             SFP(ServerFunctions::GetArchitectureType)},\
++    {"GetServerVersion",                SFP(ServerFunctions::GetServerVersion)},\
++    {"GetProtocolVersion",              SFP(ServerFunctions::GetProtocolVersion)},\
++    {"GetAvgPing",                      SFP(ServerFunctions::GetAvgPing)},\
++    {"GetIP",                           SFP(ServerFunctions::GetIP)},\
++    {"GetMaxPlayers",                   SFP(ServerFunctions::GetMaxPlayers)},\
++    {"GetPort",                         SFP(ServerFunctions::GetPort)},\
++    {"HasPassword",                     SFP(ServerFunctions::HasPassword)},\
++    {"GetDataFileEnforcementState",     SFP(ServerFunctions::GetDataFileEnforcementState)},\
++    {"GetScriptErrorIgnoringState",     SFP(ServerFunctions::GetScriptErrorIgnoringState)},\
++    \
++    {"SetGameMode",                     SFP(ServerFunctions::SetGameMode)},\
++    {"SetHostname",                     SFP(ServerFunctions::SetHostname)},\
++    {"SetServerPassword",               SFP(ServerFunctions::SetServerPassword)},\
++    {"SetDataFileEnforcementState",     SFP(ServerFunctions::SetDataFileEnforcementState)},\
++    {"SetScriptErrorIgnoringState",     SFP(ServerFunctions::SetScriptErrorIgnoringState)},\
++    {"SetRuleString",                   SFP(ServerFunctions::SetRuleString)},\
++    {"SetRuleValue",                    SFP(ServerFunctions::SetRuleValue)},\
++    \
++    {"AddDataFileRequirement",          SFP(ServerFunctions::AddDataFileRequirement)},\
++    \
++    {"DoesFileExist",                   SFP(ServerFunctions::DoesFileExist)},\
++    {"GetModDir",                       SFP(ServerFunctions::GetModDir)},\
++    {"GetPluginEnforcementState",       SFP(ServerFunctions::GetPluginEnforcementState)},\
++    {"SetPluginEnforcementState",       SFP(ServerFunctions::SetPluginEnforcementState)},\
++    {"AddPluginHash",                   SFP(ServerFunctions::AddPluginHash)}
+ 
+ class ServerFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Settings.hpp b/apps/openmw-mp/Script/Functions/Settings.hpp
+--- a/apps/openmw-mp/Script/Functions/Settings.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Settings.hpp	2026-11-24 07:02:37.551402260 +0000
+@@ -4,22 +4,22 @@
+ #include "../Types.hpp"
+ 
+ #define SETTINGSAPI \
+-    {"SetDifficulty",               SettingFunctions::SetDifficulty},\
+-    {"SetEnforcedLogLevel",         SettingFunctions::SetEnforcedLogLevel},\
+-    {"SetPhysicsFramerate",         SettingFunctions::SetPhysicsFramerate},\
++    {"SetDifficulty",               SFP(SettingFunctions::SetDifficulty)},\
++    {"SetEnforcedLogLevel",         SFP(SettingFunctions::SetEnforcedLogLevel)},\
++    {"SetPhysicsFramerate",         SFP(SettingFunctions::SetPhysicsFramerate)},\
+     \
+-    {"SetConsoleAllowed",           SettingFunctions::SetConsoleAllowed},\
+-    {"SetBedRestAllowed",           SettingFunctions::SetBedRestAllowed},\
+-    {"SetWildernessRestAllowed",    SettingFunctions::SetWildernessRestAllowed},\
+-    {"SetWaitAllowed",              SettingFunctions::SetWaitAllowed},\
++    {"SetConsoleAllowed",           SFP(SettingFunctions::SetConsoleAllowed)},\
++    {"SetBedRestAllowed",           SFP(SettingFunctions::SetBedRestAllowed)},\
++    {"SetWildernessRestAllowed",    SFP(SettingFunctions::SetWildernessRestAllowed)},\
++    {"SetWaitAllowed",              SFP(SettingFunctions::SetWaitAllowed)},\
+     \
+-    {"SetGameSettingValue",         SettingFunctions::SetGameSettingValue},\
+-    {"ClearGameSettingValues",      SettingFunctions::ClearGameSettingValues},\
++    {"SetGameSettingValue",         SFP(SettingFunctions::SetGameSettingValue)},\
++    {"ClearGameSettingValues",      SFP(SettingFunctions::ClearGameSettingValues)},\
+     \
+-    {"SetVRSettingValue",           SettingFunctions::SetVRSettingValue},\
+-    {"ClearVRSettingValues",        SettingFunctions::ClearVRSettingValues},\
++    {"SetVRSettingValue",           SFP(SettingFunctions::SetVRSettingValue)},\
++    {"ClearVRSettingValues",        SFP(SettingFunctions::ClearVRSettingValues)},\
+     \
+-    {"SendSettings",                SettingFunctions::SendSettings}
++    {"SendSettings",                SFP(SettingFunctions::SendSettings)}
+ 
+ class SettingFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Shapeshift.hpp b/apps/openmw-mp/Script/Functions/Shapeshift.hpp
+--- a/apps/openmw-mp/Script/Functions/Shapeshift.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Shapeshift.hpp	2026-11-24 07:02:37.551064345 +0000
+@@ -4,17 +4,17 @@
+ #include "../Types.hpp"
+ 
+ #define SHAPESHIFTAPI \
+-    {"GetScale",                    ShapeshiftFunctions::GetScale},\
+-    {"IsWerewolf",                  ShapeshiftFunctions::IsWerewolf},\
+-    {"GetCreatureRefId",            ShapeshiftFunctions::GetCreatureRefId},\
+-    {"GetCreatureNameDisplayState", ShapeshiftFunctions::GetCreatureNameDisplayState},\
++    {"GetScale",                    SFP(ShapeshiftFunctions::GetScale)},\
++    {"IsWerewolf",                  SFP(ShapeshiftFunctions::IsWerewolf)},\
++    {"GetCreatureRefId",            SFP(ShapeshiftFunctions::GetCreatureRefId)},\
++    {"GetCreatureNameDisplayState", SFP(ShapeshiftFunctions::GetCreatureNameDisplayState)},\
+     \
+-    {"SetScale",                    ShapeshiftFunctions::SetScale},\
+-    {"SetWerewolfState",            ShapeshiftFunctions::SetWerewolfState},\
+-    {"SetCreatureRefId",            ShapeshiftFunctions::SetCreatureRefId},\
+-    {"SetCreatureNameDisplayState", ShapeshiftFunctions::SetCreatureNameDisplayState},\
++    {"SetScale",                    SFP(ShapeshiftFunctions::SetScale)},\
++    {"SetWerewolfState",            SFP(ShapeshiftFunctions::SetWerewolfState)},\
++    {"SetCreatureRefId",            SFP(ShapeshiftFunctions::SetCreatureRefId)},\
++    {"SetCreatureNameDisplayState", SFP(ShapeshiftFunctions::SetCreatureNameDisplayState)},\
+     \
+-    {"SendShapeshift",              ShapeshiftFunctions::SendShapeshift}
++    {"SendShapeshift",              SFP(ShapeshiftFunctions::SendShapeshift)}
+ 
+ class ShapeshiftFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Spells.hpp b/apps/openmw-mp/Script/Functions/Spells.hpp
+--- a/apps/openmw-mp/Script/Functions/Spells.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Spells.hpp	2026-11-24 07:02:37.551593262 +0000
+@@ -2,50 +2,50 @@
+ #define OPENMW_SPELLAPI_HPP
+ 
+ #define SPELLAPI \
+-    {"ClearSpellbookChanges",            SpellFunctions::ClearSpellbookChanges},\
+-    {"ClearSpellsActiveChanges",         SpellFunctions::ClearSpellsActiveChanges},\
+-    {"ClearCooldownChanges",             SpellFunctions::ClearCooldownChanges},\
+-    \
+-    {"GetSpellbookChangesSize",          SpellFunctions::GetSpellbookChangesSize},\
+-    {"GetSpellbookChangesAction",        SpellFunctions::GetSpellbookChangesAction},\
+-    {"GetSpellsActiveChangesSize",       SpellFunctions::GetSpellsActiveChangesSize},\
+-    {"GetSpellsActiveChangesAction",     SpellFunctions::GetSpellsActiveChangesAction},\
+-    {"GetCooldownChangesSize",           SpellFunctions::GetCooldownChangesSize},\
+-    \
+-    {"SetSpellbookChangesAction",        SpellFunctions::SetSpellbookChangesAction},\
+-    {"SetSpellsActiveChangesAction",     SpellFunctions::SetSpellsActiveChangesAction},\
+-    \
+-    {"AddSpell",                         SpellFunctions::AddSpell},\
+-    {"AddSpellActive",                   SpellFunctions::AddSpellActive},\
+-    {"AddSpellActiveEffect",             SpellFunctions::AddSpellActiveEffect},\
+-    {"AddCooldownSpell",                 SpellFunctions::AddCooldownSpell},\
+-    \
+-    {"GetSpellId",                       SpellFunctions::GetSpellId},\
+-    {"GetSpellsActiveId",                SpellFunctions::GetSpellsActiveId},\
+-    {"GetSpellsActiveDisplayName",       SpellFunctions::GetSpellsActiveDisplayName},\
+-    {"GetSpellsActiveStackingState",     SpellFunctions::GetSpellsActiveStackingState},\
+-    {"GetSpellsActiveEffectCount",       SpellFunctions::GetSpellsActiveEffectCount},\
+-    {"GetSpellsActiveEffectId",          SpellFunctions::GetSpellsActiveEffectId},\
+-    {"GetSpellsActiveEffectArg",         SpellFunctions::GetSpellsActiveEffectArg},\
+-    {"GetSpellsActiveEffectMagnitude",   SpellFunctions::GetSpellsActiveEffectMagnitude},\
+-    {"GetSpellsActiveEffectDuration",    SpellFunctions::GetSpellsActiveEffectDuration},\
+-    {"GetSpellsActiveEffectTimeLeft",    SpellFunctions::GetSpellsActiveEffectTimeLeft},\
+-    \
+-    {"DoesSpellsActiveHavePlayerCaster", SpellFunctions::DoesSpellsActiveHavePlayerCaster},\
+-    {"GetSpellsActiveCasterPid",         SpellFunctions::GetSpellsActiveCasterPid},\
+-    {"GetSpellsActiveCasterRefId",       SpellFunctions::GetSpellsActiveCasterRefId},\
+-    {"GetSpellsActiveCasterRefNum",      SpellFunctions::GetSpellsActiveCasterRefNum},\
+-    {"GetSpellsActiveCasterMpNum",       SpellFunctions::GetSpellsActiveCasterMpNum},\
+-    \
+-    {"GetCooldownSpellId",               SpellFunctions::GetCooldownSpellId},\
+-    {"GetCooldownStartDay",              SpellFunctions::GetCooldownStartDay},\
+-    {"GetCooldownStartHour",             SpellFunctions::GetCooldownStartHour},\
+-    \
+-    {"SendSpellbookChanges",             SpellFunctions::SendSpellbookChanges},\
+-    {"SendSpellsActiveChanges",          SpellFunctions::SendSpellsActiveChanges},\
+-    {"SendCooldownChanges",              SpellFunctions::SendCooldownChanges},\
++    {"ClearSpellbookChanges",            SFP(SpellFunctions::ClearSpellbookChanges)},\
++    {"ClearSpellsActiveChanges",         SFP(SpellFunctions::ClearSpellsActiveChanges)},\
++    {"ClearCooldownChanges",             SFP(SpellFunctions::ClearCooldownChanges)},\
++    \
++    {"GetSpellbookChangesSize",          SFP(SpellFunctions::GetSpellbookChangesSize)},\
++    {"GetSpellbookChangesAction",        SFP(SpellFunctions::GetSpellbookChangesAction)},\
++    {"GetSpellsActiveChangesSize",       SFP(SpellFunctions::GetSpellsActiveChangesSize)},\
++    {"GetSpellsActiveChangesAction",     SFP(SpellFunctions::GetSpellsActiveChangesAction)},\
++    {"GetCooldownChangesSize",           SFP(SpellFunctions::GetCooldownChangesSize)},\
++    \
++    {"SetSpellbookChangesAction",        SFP(SpellFunctions::SetSpellbookChangesAction)},\
++    {"SetSpellsActiveChangesAction",     SFP(SpellFunctions::SetSpellsActiveChangesAction)},\
++    \
++    {"AddSpell",                         SFP(SpellFunctions::AddSpell)},\
++    {"AddSpellActive",                   SFP(SpellFunctions::AddSpellActive)},\
++    {"AddSpellActiveEffect",             SFP(SpellFunctions::AddSpellActiveEffect)},\
++    {"AddCooldownSpell",                 SFP(SpellFunctions::AddCooldownSpell)},\
++    \
++    {"GetSpellId",                       SFP(SpellFunctions::GetSpellId)},\
++    {"GetSpellsActiveId",                SFP(SpellFunctions::GetSpellsActiveId)},\
++    {"GetSpellsActiveDisplayName",       SFP(SpellFunctions::GetSpellsActiveDisplayName)},\
++    {"GetSpellsActiveStackingState",     SFP(SpellFunctions::GetSpellsActiveStackingState)},\
++    {"GetSpellsActiveEffectCount",       SFP(SpellFunctions::GetSpellsActiveEffectCount)},\
++    {"GetSpellsActiveEffectId",          SFP(SpellFunctions::GetSpellsActiveEffectId)},\
++    {"GetSpellsActiveEffectArg",         SFP(SpellFunctions::GetSpellsActiveEffectArg)},\
++    {"GetSpellsActiveEffectMagnitude",   SFP(SpellFunctions::GetSpellsActiveEffectMagnitude)},\
++    {"GetSpellsActiveEffectDuration",    SFP(SpellFunctions::GetSpellsActiveEffectDuration)},\
++    {"GetSpellsActiveEffectTimeLeft",    SFP(SpellFunctions::GetSpellsActiveEffectTimeLeft)},\
++    \
++    {"DoesSpellsActiveHavePlayerCaster", SFP(SpellFunctions::DoesSpellsActiveHavePlayerCaster)},\
++    {"GetSpellsActiveCasterPid",         SFP(SpellFunctions::GetSpellsActiveCasterPid)},\
++    {"GetSpellsActiveCasterRefId",       SFP(SpellFunctions::GetSpellsActiveCasterRefId)},\
++    {"GetSpellsActiveCasterRefNum",      SFP(SpellFunctions::GetSpellsActiveCasterRefNum)},\
++    {"GetSpellsActiveCasterMpNum",       SFP(SpellFunctions::GetSpellsActiveCasterMpNum)},\
++    \
++    {"GetCooldownSpellId",               SFP(SpellFunctions::GetCooldownSpellId)},\
++    {"GetCooldownStartDay",              SFP(SpellFunctions::GetCooldownStartDay)},\
++    {"GetCooldownStartHour",             SFP(SpellFunctions::GetCooldownStartHour)},\
++    \
++    {"SendSpellbookChanges",             SFP(SpellFunctions::SendSpellbookChanges)},\
++    {"SendSpellsActiveChanges",          SFP(SpellFunctions::SendSpellsActiveChanges)},\
++    {"SendCooldownChanges",              SFP(SpellFunctions::SendCooldownChanges)},\
+     \
+-    {"InitializeSpellbookChanges",     SpellFunctions::InitializeSpellbookChanges}
++    {"InitializeSpellbookChanges",     SFP(SpellFunctions::InitializeSpellbookChanges)}
+ 
+ class SpellFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Stats.hpp b/apps/openmw-mp/Script/Functions/Stats.hpp
+--- a/apps/openmw-mp/Script/Functions/Stats.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Stats.hpp	2026-11-24 07:02:37.551502501 +0000
+@@ -2,84 +2,84 @@
+ #define OPENMW_STATAPI_HPP
+ 
+ #define STATAPI \
+-    {"GetAttributeCount",       StatsFunctions::GetAttributeCount},\
+-    {"GetSkillCount",           StatsFunctions::GetSkillCount},\
+-    {"GetAttributeId",          StatsFunctions::GetAttributeId},\
+-    {"GetSkillId",              StatsFunctions::GetSkillId},\
+-    {"GetAttributeName",        StatsFunctions::GetAttributeName},\
+-    {"GetSkillName",            StatsFunctions::GetSkillName},\
+-    \
+-    {"GetName",                 StatsFunctions::GetName},\
+-    {"GetRace",                 StatsFunctions::GetRace},\
+-    {"GetHead",                 StatsFunctions::GetHead},\
+-    {"GetHair",                 StatsFunctions::GetHairstyle},\
+-    {"GetIsMale",               StatsFunctions::GetIsMale},\
+-    {"GetModel",                StatsFunctions::GetModel},\
+-    {"GetBirthsign",            StatsFunctions::GetBirthsign},\
+-    \
+-    {"GetLevel",                StatsFunctions::GetLevel},\
+-    {"GetLevelProgress",        StatsFunctions::GetLevelProgress},\
+-    \
+-    {"GetHealthBase",           StatsFunctions::GetHealthBase},\
+-    {"GetHealthCurrent",        StatsFunctions::GetHealthCurrent},\
+-    \
+-    {"GetMagickaBase",          StatsFunctions::GetMagickaBase},\
+-    {"GetMagickaCurrent",       StatsFunctions::GetMagickaCurrent},\
+-    \
+-    {"GetFatigueBase",          StatsFunctions::GetFatigueBase},\
+-    {"GetFatigueCurrent",       StatsFunctions::GetFatigueCurrent},\
+-    \
+-    {"GetAttributeBase",        StatsFunctions::GetAttributeBase},\
+-    {"GetAttributeModifier",    StatsFunctions::GetAttributeModifier},\
+-    {"GetAttributeDamage",      StatsFunctions::GetAttributeDamage},\
+-    \
+-    {"GetSkillBase",            StatsFunctions::GetSkillBase},\
+-    {"GetSkillModifier",        StatsFunctions::GetSkillModifier},\
+-    {"GetSkillDamage",          StatsFunctions::GetSkillDamage},\
+-    {"GetSkillProgress",        StatsFunctions::GetSkillProgress},\
+-    {"GetSkillIncrease",        StatsFunctions::GetSkillIncrease},\
+-    \
+-    {"GetBounty",               StatsFunctions::GetBounty},\
+-    \
+-    {"SetName",                 StatsFunctions::SetName},\
+-    {"SetRace",                 StatsFunctions::SetRace},\
+-    {"SetHead",                 StatsFunctions::SetHead},\
+-    {"SetHair",                 StatsFunctions::SetHairstyle},\
+-    {"SetIsMale",               StatsFunctions::SetIsMale},\
+-    {"SetModel",                StatsFunctions::SetModel},\
+-    {"SetBirthsign",            StatsFunctions::SetBirthsign},\
+-    {"SetResetStats",           StatsFunctions::SetResetStats},\
+-    \
+-    {"SetLevel",                StatsFunctions::SetLevel},\
+-    {"SetLevelProgress",        StatsFunctions::SetLevelProgress},\
+-    \
+-    {"SetHealthBase",           StatsFunctions::SetHealthBase},\
+-    {"SetHealthCurrent",        StatsFunctions::SetHealthCurrent},\
+-    {"SetMagickaBase",          StatsFunctions::SetMagickaBase},\
+-    {"SetMagickaCurrent",       StatsFunctions::SetMagickaCurrent},\
+-    {"SetFatigueBase",          StatsFunctions::SetFatigueBase},\
+-    {"SetFatigueCurrent",       StatsFunctions::SetFatigueCurrent},\
+-    \
+-    {"SetAttributeBase",        StatsFunctions::SetAttributeBase},\
+-    {"ClearAttributeModifier",  StatsFunctions::ClearAttributeModifier},\
+-    {"SetAttributeDamage",      StatsFunctions::SetAttributeDamage},\
+-    \
+-    {"SetSkillBase",            StatsFunctions::SetSkillBase},\
+-    {"ClearSkillModifier",      StatsFunctions::ClearSkillModifier},\
+-    {"SetSkillDamage",          StatsFunctions::SetSkillDamage},\
+-    {"SetSkillProgress",        StatsFunctions::SetSkillProgress},\
+-    {"SetSkillIncrease",        StatsFunctions::SetSkillIncrease},\
+-    \
+-    {"SetBounty",               StatsFunctions::SetBounty},\
+-    {"SetCharGenStage",         StatsFunctions::SetCharGenStage},\
+-    \
+-    {"SendBaseInfo",            StatsFunctions::SendBaseInfo},\
+-    \
+-    {"SendStatsDynamic",        StatsFunctions::SendStatsDynamic},\
+-    {"SendAttributes",          StatsFunctions::SendAttributes},\
+-    {"SendSkills",              StatsFunctions::SendSkills},\
+-    {"SendLevel",               StatsFunctions::SendLevel},\
+-    {"SendBounty",              StatsFunctions::SendBounty}
++    {"GetAttributeCount",       SFP(StatsFunctions::GetAttributeCount)},\
++    {"GetSkillCount",           SFP(StatsFunctions::GetSkillCount)},\
++    {"GetAttributeId",          SFP(StatsFunctions::GetAttributeId)},\
++    {"GetSkillId",              SFP(StatsFunctions::GetSkillId)},\
++    {"GetAttributeName",        SFP(StatsFunctions::GetAttributeName)},\
++    {"GetSkillName",            SFP(StatsFunctions::GetSkillName)},\
++    \
++    {"GetName",                 SFP(StatsFunctions::GetName)},\
++    {"GetRace",                 SFP(StatsFunctions::GetRace)},\
++    {"GetHead",                 SFP(StatsFunctions::GetHead)},\
++    {"GetHair",                 SFP(StatsFunctions::GetHairstyle)},\
++    {"GetIsMale",               SFP(StatsFunctions::GetIsMale)},\
++    {"GetModel",                SFP(StatsFunctions::GetModel)},\
++    {"GetBirthsign",            SFP(StatsFunctions::GetBirthsign)},\
++    \
++    {"GetLevel",                SFP(StatsFunctions::GetLevel)},\
++    {"GetLevelProgress",        SFP(StatsFunctions::GetLevelProgress)},\
++    \
++    {"GetHealthBase",           SFP(StatsFunctions::GetHealthBase)},\
++    {"GetHealthCurrent",        SFP(StatsFunctions::GetHealthCurrent)},\
++    \
++    {"GetMagickaBase",          SFP(StatsFunctions::GetMagickaBase)},\
++    {"GetMagickaCurrent",       SFP(StatsFunctions::GetMagickaCurrent)},\
++    \
++    {"GetFatigueBase",          SFP(StatsFunctions::GetFatigueBase)},\
++    {"GetFatigueCurrent",       SFP(StatsFunctions::GetFatigueCurrent)},\
++    \
++    {"GetAttributeBase",        SFP(StatsFunctions::GetAttributeBase)},\
++    {"GetAttributeModifier",    SFP(StatsFunctions::GetAttributeModifier)},\
++    {"GetAttributeDamage",      SFP(StatsFunctions::GetAttributeDamage)},\
++    \
++    {"GetSkillBase",            SFP(StatsFunctions::GetSkillBase)},\
++    {"GetSkillModifier",        SFP(StatsFunctions::GetSkillModifier)},\
++    {"GetSkillDamage",          SFP(StatsFunctions::GetSkillDamage)},\
++    {"GetSkillProgress",        SFP(StatsFunctions::GetSkillProgress)},\
++    {"GetSkillIncrease",        SFP(StatsFunctions::GetSkillIncrease)},\
++    \
++    {"GetBounty",               SFP(StatsFunctions::GetBounty)},\
++    \
++    {"SetName",                 SFP(StatsFunctions::SetName)},\
++    {"SetRace",                 SFP(StatsFunctions::SetRace)},\
++    {"SetHead",                 SFP(StatsFunctions::SetHead)},\
++    {"SetHair",                 SFP(StatsFunctions::SetHairstyle)},\
++    {"SetIsMale",               SFP(StatsFunctions::SetIsMale)},\
++    {"SetModel",                SFP(StatsFunctions::SetModel)},\
++    {"SetBirthsign",            SFP(StatsFunctions::SetBirthsign)},\
++    {"SetResetStats",           SFP(StatsFunctions::SetResetStats)},\
++    \
++    {"SetLevel",                SFP(StatsFunctions::SetLevel)},\
++    {"SetLevelProgress",        SFP(StatsFunctions::SetLevelProgress)},\
++    \
++    {"SetHealthBase",           SFP(StatsFunctions::SetHealthBase)},\
++    {"SetHealthCurrent",        SFP(StatsFunctions::SetHealthCurrent)},\
++    {"SetMagickaBase",          SFP(StatsFunctions::SetMagickaBase)},\
++    {"SetMagickaCurrent",       SFP(StatsFunctions::SetMagickaCurrent)},\
++    {"SetFatigueBase",          SFP(StatsFunctions::SetFatigueBase)},\
++    {"SetFatigueCurrent",       SFP(StatsFunctions::SetFatigueCurrent)},\
++    \
++    {"SetAttributeBase",        SFP(StatsFunctions::SetAttributeBase)},\
++    {"ClearAttributeModifier",  SFP(StatsFunctions::ClearAttributeModifier)},\
++    {"SetAttributeDamage",      SFP(StatsFunctions::SetAttributeDamage)},\
++    \
++    {"SetSkillBase",            SFP(StatsFunctions::SetSkillBase)},\
++    {"ClearSkillModifier",      SFP(StatsFunctions::ClearSkillModifier)},\
++    {"SetSkillDamage",          SFP(StatsFunctions::SetSkillDamage)},\
++    {"SetSkillProgress",        SFP(StatsFunctions::SetSkillProgress)},\
++    {"SetSkillIncrease",        SFP(StatsFunctions::SetSkillIncrease)},\
++    \
++    {"SetBounty",               SFP(StatsFunctions::SetBounty)},\
++    {"SetCharGenStage",         SFP(StatsFunctions::SetCharGenStage)},\
++    \
++    {"SendBaseInfo",            SFP(StatsFunctions::SendBaseInfo)},\
++    \
++    {"SendStatsDynamic",        SFP(StatsFunctions::SendStatsDynamic)},\
++    {"SendAttributes",          SFP(StatsFunctions::SendAttributes)},\
++    {"SendSkills",              SFP(StatsFunctions::SendSkills)},\
++    {"SendLevel",               SFP(StatsFunctions::SendLevel)},\
++    {"SendBounty",              SFP(StatsFunctions::SendBounty)}
+ 
+ class StatsFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Functions/Worldstate.hpp b/apps/openmw-mp/Script/Functions/Worldstate.hpp
+--- a/apps/openmw-mp/Script/Functions/Worldstate.hpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/Functions/Worldstate.hpp	2026-11-24 07:02:37.551708681 +0000
+@@ -5,87 +5,87 @@
+ #include "../Types.hpp"
+ 
+ #define WORLDSTATEAPI \
+-    {"ReadReceivedWorldstate",            WorldstateFunctions::ReadReceivedWorldstate},\
++    {"ReadReceivedWorldstate",            SFP(WorldstateFunctions::ReadReceivedWorldstate)},\
+     \
+-    {"CopyReceivedWorldstateToStore",     WorldstateFunctions::CopyReceivedWorldstateToStore},\
++    {"CopyReceivedWorldstateToStore",     SFP(WorldstateFunctions::CopyReceivedWorldstateToStore)},\
+     \
+-    {"ClearKillChanges",                  WorldstateFunctions::ClearKillChanges},\
+-    {"ClearMapChanges",                   WorldstateFunctions::ClearMapChanges},\
+-    {"ClearClientGlobals",                WorldstateFunctions::ClearClientGlobals},\
+-    \
+-    {"GetKillChangesSize",                WorldstateFunctions::GetKillChangesSize},\
+-    {"GetMapChangesSize",                 WorldstateFunctions::GetMapChangesSize},\
+-    {"GetClientGlobalsSize",              WorldstateFunctions::GetClientGlobalsSize},\
+-    \
+-    {"GetKillRefId",                      WorldstateFunctions::GetKillRefId},\
+-    {"GetKillNumber",                     WorldstateFunctions::GetKillNumber},\
+-    \
+-    {"GetWeatherRegion",                  WorldstateFunctions::GetWeatherRegion},\
+-    {"GetWeatherCurrent",                 WorldstateFunctions::GetWeatherCurrent},\
+-    {"GetWeatherNext",                    WorldstateFunctions::GetWeatherNext},\
+-    {"GetWeatherQueued",                  WorldstateFunctions::GetWeatherQueued},\
+-    {"GetWeatherTransitionFactor",        WorldstateFunctions::GetWeatherTransitionFactor},\
+-    \
+-    {"GetMapTileCellX",                   WorldstateFunctions::GetMapTileCellX},\
+-    {"GetMapTileCellY",                   WorldstateFunctions::GetMapTileCellY},\
+-    \
+-    {"GetClientGlobalId",                 WorldstateFunctions::GetClientGlobalId},\
+-    {"GetClientGlobalVariableType",       WorldstateFunctions::GetClientGlobalVariableType},\
+-    {"GetClientGlobalIntValue",           WorldstateFunctions::GetClientGlobalIntValue},\
+-    {"GetClientGlobalFloatValue",         WorldstateFunctions::GetClientGlobalFloatValue},\
+-    \
+-    {"SetAuthorityRegion",                WorldstateFunctions::SetAuthorityRegion},\
+-    \
+-    {"SetWeatherRegion",                  WorldstateFunctions::SetWeatherRegion},\
+-    {"SetWeatherForceState",              WorldstateFunctions::SetWeatherForceState},\
+-    {"SetWeatherCurrent",                 WorldstateFunctions::SetWeatherCurrent},\
+-    {"SetWeatherNext",                    WorldstateFunctions::SetWeatherNext},\
+-    {"SetWeatherQueued",                  WorldstateFunctions::SetWeatherQueued},\
+-    {"SetWeatherTransitionFactor",        WorldstateFunctions::SetWeatherTransitionFactor},\
+-    \
+-    {"SetHour",                           WorldstateFunctions::SetHour},\
+-    {"SetDay",                            WorldstateFunctions::SetDay},\
+-    {"SetMonth",                          WorldstateFunctions::SetMonth},\
+-    {"SetYear",                           WorldstateFunctions::SetYear},\
+-    {"SetDaysPassed",                     WorldstateFunctions::SetDaysPassed},\
+-    {"SetTimeScale",                      WorldstateFunctions::SetTimeScale},\
+-    \
+-    {"SetPlayerCollisionState",           WorldstateFunctions::SetPlayerCollisionState},\
+-    {"SetActorCollisionState",            WorldstateFunctions::SetActorCollisionState},\
+-    {"SetPlacedObjectCollisionState",     WorldstateFunctions::SetPlacedObjectCollisionState},\
+-    {"UseActorCollisionForPlacedObjects", WorldstateFunctions::UseActorCollisionForPlacedObjects},\
+-    \
+-    {"AddKill",                           WorldstateFunctions::AddKill},\
+-    {"AddClientGlobalInteger",            WorldstateFunctions::AddClientGlobalInteger},\
+-    {"AddClientGlobalFloat",              WorldstateFunctions::AddClientGlobalFloat},\
+-    {"AddSynchronizedClientScriptId",     WorldstateFunctions::AddSynchronizedClientScriptId},\
+-    {"AddSynchronizedClientGlobalId",     WorldstateFunctions::AddSynchronizedClientGlobalId},\
+-    {"AddEnforcedCollisionRefId",         WorldstateFunctions::AddEnforcedCollisionRefId},\
+-    {"AddCellToReset",                    WorldstateFunctions::AddCellToReset},\
+-    {"AddDestinationOverride",            WorldstateFunctions::AddDestinationOverride},\
+-    \
+-    {"ClearSynchronizedClientScriptIds",  WorldstateFunctions::ClearSynchronizedClientScriptIds},\
+-    {"ClearSynchronizedClientGlobalIds",  WorldstateFunctions::ClearSynchronizedClientGlobalIds},\
+-    {"ClearEnforcedCollisionRefIds",      WorldstateFunctions::ClearEnforcedCollisionRefIds},\
+-    {"ClearCellsToReset",                 WorldstateFunctions::ClearCellsToReset},\
+-    {"ClearDestinationOverrides",         WorldstateFunctions::ClearDestinationOverrides},\
+-    \
+-    {"SaveMapTileImageFile",              WorldstateFunctions::SaveMapTileImageFile},\
+-    {"LoadMapTileImageFile",              WorldstateFunctions::LoadMapTileImageFile},\
+-    \
+-    {"SendClientScriptGlobal",            WorldstateFunctions::SendClientScriptGlobal},\
+-    {"SendClientScriptSettings",          WorldstateFunctions::SendClientScriptSettings},\
+-    {"SendWorldKillCount",                WorldstateFunctions::SendWorldKillCount},\
+-    {"SendWorldMap",                      WorldstateFunctions::SendWorldMap},\
+-    {"SendWorldTime",                     WorldstateFunctions::SendWorldTime},\
+-    {"SendWorldWeather",                  WorldstateFunctions::SendWorldWeather},\
+-    {"SendWorldCollisionOverride",        WorldstateFunctions::SendWorldCollisionOverride},\
+-    {"SendCellReset",                     WorldstateFunctions::SendCellReset},\
+-    {"SendWorldDestinationOverride",      WorldstateFunctions::SendWorldDestinationOverride},\
+-    {"SendWorldRegionAuthority",          WorldstateFunctions::SendWorldRegionAuthority},\
++    {"ClearKillChanges",                  SFP(WorldstateFunctions::ClearKillChanges)},\
++    {"ClearMapChanges",                   SFP(WorldstateFunctions::ClearMapChanges)},\
++    {"ClearClientGlobals",                SFP(WorldstateFunctions::ClearClientGlobals)},\
++    \
++    {"GetKillChangesSize",                SFP(WorldstateFunctions::GetKillChangesSize)},\
++    {"GetMapChangesSize",                 SFP(WorldstateFunctions::GetMapChangesSize)},\
++    {"GetClientGlobalsSize",              SFP(WorldstateFunctions::GetClientGlobalsSize)},\
++    \
++    {"GetKillRefId",                      SFP(WorldstateFunctions::GetKillRefId)},\
++    {"GetKillNumber",                     SFP(WorldstateFunctions::GetKillNumber)},\
++    \
++    {"GetWeatherRegion",                  SFP(WorldstateFunctions::GetWeatherRegion)},\
++    {"GetWeatherCurrent",                 SFP(WorldstateFunctions::GetWeatherCurrent)},\
++    {"GetWeatherNext",                    SFP(WorldstateFunctions::GetWeatherNext)},\
++    {"GetWeatherQueued",                  SFP(WorldstateFunctions::GetWeatherQueued)},\
++    {"GetWeatherTransitionFactor",        SFP(WorldstateFunctions::GetWeatherTransitionFactor)},\
++    \
++    {"GetMapTileCellX",                   SFP(WorldstateFunctions::GetMapTileCellX)},\
++    {"GetMapTileCellY",                   SFP(WorldstateFunctions::GetMapTileCellY)},\
++    \
++    {"GetClientGlobalId",                 SFP(WorldstateFunctions::GetClientGlobalId)},\
++    {"GetClientGlobalVariableType",       SFP(WorldstateFunctions::GetClientGlobalVariableType)},\
++    {"GetClientGlobalIntValue",           SFP(WorldstateFunctions::GetClientGlobalIntValue)},\
++    {"GetClientGlobalFloatValue",         SFP(WorldstateFunctions::GetClientGlobalFloatValue)},\
++    \
++    {"SetAuthorityRegion",                SFP(WorldstateFunctions::SetAuthorityRegion)},\
++    \
++    {"SetWeatherRegion",                  SFP(WorldstateFunctions::SetWeatherRegion)},\
++    {"SetWeatherForceState",              SFP(WorldstateFunctions::SetWeatherForceState)},\
++    {"SetWeatherCurrent",                 SFP(WorldstateFunctions::SetWeatherCurrent)},\
++    {"SetWeatherNext",                    SFP(WorldstateFunctions::SetWeatherNext)},\
++    {"SetWeatherQueued",                  SFP(WorldstateFunctions::SetWeatherQueued)},\
++    {"SetWeatherTransitionFactor",        SFP(WorldstateFunctions::SetWeatherTransitionFactor)},\
++    \
++    {"SetHour",                           SFP(WorldstateFunctions::SetHour)},\
++    {"SetDay",                            SFP(WorldstateFunctions::SetDay)},\
++    {"SetMonth",                          SFP(WorldstateFunctions::SetMonth)},\
++    {"SetYear",                           SFP(WorldstateFunctions::SetYear)},\
++    {"SetDaysPassed",                     SFP(WorldstateFunctions::SetDaysPassed)},\
++    {"SetTimeScale",                      SFP(WorldstateFunctions::SetTimeScale)},\
++    \
++    {"SetPlayerCollisionState",           SFP(WorldstateFunctions::SetPlayerCollisionState)},\
++    {"SetActorCollisionState",            SFP(WorldstateFunctions::SetActorCollisionState)},\
++    {"SetPlacedObjectCollisionState",     SFP(WorldstateFunctions::SetPlacedObjectCollisionState)},\
++    {"UseActorCollisionForPlacedObjects", SFP(WorldstateFunctions::UseActorCollisionForPlacedObjects)},\
++    \
++    {"AddKill",                           SFP(WorldstateFunctions::AddKill)},\
++    {"AddClientGlobalInteger",            SFP(WorldstateFunctions::AddClientGlobalInteger)},\
++    {"AddClientGlobalFloat",              SFP(WorldstateFunctions::AddClientGlobalFloat)},\
++    {"AddSynchronizedClientScriptId",     SFP(WorldstateFunctions::AddSynchronizedClientScriptId)},\
++    {"AddSynchronizedClientGlobalId",     SFP(WorldstateFunctions::AddSynchronizedClientGlobalId)},\
++    {"AddEnforcedCollisionRefId",         SFP(WorldstateFunctions::AddEnforcedCollisionRefId)},\
++    {"AddCellToReset",                    SFP(WorldstateFunctions::AddCellToReset)},\
++    {"AddDestinationOverride",            SFP(WorldstateFunctions::AddDestinationOverride)},\
++    \
++    {"ClearSynchronizedClientScriptIds",  SFP(WorldstateFunctions::ClearSynchronizedClientScriptIds)},\
++    {"ClearSynchronizedClientGlobalIds",  SFP(WorldstateFunctions::ClearSynchronizedClientGlobalIds)},\
++    {"ClearEnforcedCollisionRefIds",      SFP(WorldstateFunctions::ClearEnforcedCollisionRefIds)},\
++    {"ClearCellsToReset",                 SFP(WorldstateFunctions::ClearCellsToReset)},\
++    {"ClearDestinationOverrides",         SFP(WorldstateFunctions::ClearDestinationOverrides)},\
++    \
++    {"SaveMapTileImageFile",              SFP(WorldstateFunctions::SaveMapTileImageFile)},\
++    {"LoadMapTileImageFile",              SFP(WorldstateFunctions::LoadMapTileImageFile)},\
++    \
++    {"SendClientScriptGlobal",            SFP(WorldstateFunctions::SendClientScriptGlobal)},\
++    {"SendClientScriptSettings",          SFP(WorldstateFunctions::SendClientScriptSettings)},\
++    {"SendWorldKillCount",                SFP(WorldstateFunctions::SendWorldKillCount)},\
++    {"SendWorldMap",                      SFP(WorldstateFunctions::SendWorldMap)},\
++    {"SendWorldTime",                     SFP(WorldstateFunctions::SendWorldTime)},\
++    {"SendWorldWeather",                  SFP(WorldstateFunctions::SendWorldWeather)},\
++    {"SendWorldCollisionOverride",        SFP(WorldstateFunctions::SendWorldCollisionOverride)},\
++    {"SendCellReset",                     SFP(WorldstateFunctions::SendCellReset)},\
++    {"SendWorldDestinationOverride",      SFP(WorldstateFunctions::SendWorldDestinationOverride)},\
++    {"SendWorldRegionAuthority",          SFP(WorldstateFunctions::SendWorldRegionAuthority)},\
+     \
+-    {"ReadLastWorldstate",                WorldstateFunctions::ReadLastWorldstate},\
+-    {"CopyLastWorldstateToStore",         WorldstateFunctions::CopyLastWorldstateToStore}
++    {"ReadLastWorldstate",                SFP(WorldstateFunctions::ReadLastWorldstate)},\
++    {"CopyLastWorldstateToStore",         SFP(WorldstateFunctions::CopyLastWorldstateToStore)}
+ 
+ class WorldstateFunctions
+ {
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/LangLua/LangLua.cpp b/apps/openmw-mp/Script/LangLua/LangLua.cpp
+--- a/apps/openmw-mp/Script/LangLua/LangLua.cpp	2026-11-24 06:11:17.872422151 +0000
++++ b/apps/openmw-mp/Script/LangLua/LangLua.cpp	2026-11-24 07:02:37.552463158 +0000
+@@ -78,7 +78,7 @@
+         // Retrieve function data
+         constexpr ScriptFunctionData const& functionData = ScriptFunctions::functions[FunctionIndex];
+         // Call the C++ function using reinterpret_cast
+-        return reinterpret_cast<FunctionEllipsis<ReturnType>>(functionData.func.addr)(std::forward<Args>(args)...);
++        return reinterpret_cast<FunctionEllipsis<ReturnType>>(functionData.func.getAddr())(std::forward<Args>(args)...);
+     }
+ };
+ 
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/LangNative/LangNative.cpp b/apps/openmw-mp/Script/LangNative/LangNative.cpp
+--- a/apps/openmw-mp/Script/LangNative/LangNative.cpp	2026-11-24 06:11:17.874140050 +0000
++++ b/apps/openmw-mp/Script/LangNative/LangNative.cpp	2026-11-24 07:02:37.552390894 +0000
+@@ -43,7 +43,7 @@
+         std::string pf(prefix);
+ 
+         for (const auto &function : ScriptFunctions::functions)
+-            if (!SetScript(lib, std::string(pf + function.name).c_str(), function.func.addr))
++            if (!SetScript(lib, std::string(pf + function.name).c_str(), function.func.getAddr()))
+                 LOG_MESSAGE_SIMPLE(TimedLog::LOG_WARN, "Script function pointer not found: %s", function.name);
+     }
+     catch (...)
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/ScriptFunctions.hpp b/apps/openmw-mp/Script/ScriptFunctions.hpp
+--- a/apps/openmw-mp/Script/ScriptFunctions.hpp	2026-11-24 06:11:17.874202518 +0000
++++ b/apps/openmw-mp/Script/ScriptFunctions.hpp	2026-11-24 07:02:37.549995984 +0000
+@@ -118,16 +118,16 @@
+ 
+ 
+     static constexpr ScriptFunctionData functions[]{
+-            {"CreateTimer",         ScriptFunctions::CreateTimer},
+-            {"CreateTimerEx",       ScriptFunctions::CreateTimerEx},
+-            {"MakePublic",          ScriptFunctions::MakePublic},
+-            {"CallPublic",          ScriptFunctions::CallPublic},
++            {"CreateTimer",         SFP(ScriptFunctions::CreateTimer)},
++            {"CreateTimerEx",       SFP(ScriptFunctions::CreateTimerEx)},
++            {"MakePublic",          SFP(ScriptFunctions::MakePublic)},
++            {"CallPublic",          SFP(ScriptFunctions::CallPublic)},
+ 
+-            {"StartTimer",          ScriptFunctions::StartTimer},
+-            {"StopTimer",           ScriptFunctions::StopTimer},
+-            {"RestartTimer",        ScriptFunctions::RestartTimer},
+-            {"FreeTimer",           ScriptFunctions::FreeTimer},
+-            {"IsTimerElapsed",      ScriptFunctions::IsTimerElapsed},
++            {"StartTimer",          SFP(ScriptFunctions::StartTimer)},
++            {"StopTimer",           SFP(ScriptFunctions::StopTimer)},
++            {"RestartTimer",        SFP(ScriptFunctions::RestartTimer)},
++            {"FreeTimer",           SFP(ScriptFunctions::FreeTimer)},
++            {"IsTimerElapsed",      SFP(ScriptFunctions::IsTimerElapsed)},
+ 
+             ACTORAPI,
+             BOOKAPI,
+diff -ruN '--exclude=build' a/apps/openmw-mp/Script/Types.hpp b/apps/openmw-mp/Script/Types.hpp
+--- a/apps/openmw-mp/Script/Types.hpp	2026-11-24 06:11:17.874202518 +0000
++++ b/apps/openmw-mp/Script/Types.hpp	2026-11-24 07:02:37.549392250 +0000
+@@ -96,17 +96,14 @@
+ };
+ 
+ 
++template<auto F> void* ScriptAddrOf() noexcept { return reinterpret_cast<void*>(F); }
+ struct ScriptFunctionPointer : public ScriptIdentity
+ {
+-    void *addr;
+-#if (!defined(__clang__) && defined(__GNUC__))
++    void* (*getAddr)() noexcept;
+     template<typename R, typename... Types>
+-    constexpr ScriptFunctionPointer(Function<R, Types...> addr) : ScriptIdentity(addr), addr((void*)(addr)) {}
+-#else
+-    template<typename R, typename... Types>
+-    constexpr ScriptFunctionPointer(Function<R, Types...> addr) : ScriptIdentity(addr), addr(addr) {}
+-#endif
++    constexpr ScriptFunctionPointer(Function<R, Types...> f, void* (*g)() noexcept) : ScriptIdentity(f), getAddr(g) {}
+ };
++#define SFP(f) ScriptFunctionPointer(f, &ScriptAddrOf<f>)
+ 
+ struct ScriptFunctionData
+ {
